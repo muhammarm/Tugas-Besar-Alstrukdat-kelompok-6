@@ -16,7 +16,7 @@
 typedef char Petak; /*Petak merupakan character*/
 
 typedef struct {
-        Petak Peta[IdxMaxPetak-IdxMinPetak+1+1]; /* memori tempat penyimpan elemen pada peta(container), peta meurpakan array of character */
+        Petak Peta[IdxMaxPetak-IdxMinPetak+1+1]; /* memori tempat penyimpan elemen pada peta(container), peta merupakan array of character */
 } TabPeta;
 
 void MakeEmptyMap (TabPeta *P);

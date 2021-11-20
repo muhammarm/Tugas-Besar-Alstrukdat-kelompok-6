@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 void MakeEmptyMap (TabPeta *P)
-/* Menghasilkan tabel peta P kosong dengan kapasitas (IdxMaxPetak-IdxMinPetak+1) */
+/* Menghasilkan tabel peta P kosong dengan kapasitas (IdxMaxPetak-IdxMinPetak+1+1) */
 /*Tabel Peta di set dengan default char '?'*/
 {
     for (int i=0;i<=IdxMaxPetak;i++)
