@@ -2,7 +2,14 @@
 #include<stdlib.h>
 #include "roll.h"
 
-int nomor(int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
+Player CreatePlayer (Player *P){
+    scanf("%s", &Nama(*P));
+    Posisi(*P)=0;
+}
+/* I.S. P sembarang   */
+/* F.S. Terbentuk player. Lihat definisi di atas. */
+
+int getNomor(int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
 {
 	int nomor;
 	A:nomor=rand()%(maxroll+1);
@@ -11,40 +18,40 @@ int nomor(int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor da
 	else
 		return nomor;
 }
-void langkahMaju(char nama[255],int *posisi,int dice){   // menambahkan nilai pada posisi player sesuai roll dadu
-    printf("%s maju %d langkah.\n",nama, dice);
-    *posisi = *posisi+dice;
-    printf("%s berada di petak %d.\n",nama, *posisi);
+void langkahMaju(Player *P,int dice){                   // menambahkan nilai pada posisi player sesuai roll dadu
+    printf("%s maju %d langkah.\n",Nama(*P), dice);
+    Posisi(*P) = Posisi(*P)+dice;
+    printf("%s berada di petak %d.\n",Nama(*P), Posisi(*P)+1);
 }
-void langkahMundur(char nama[255],int *posisi,int dice){   // mengurangkan nilai pada posisi player sesuai roll dadu
-    printf("%s mundur %d langkah.\n",nama, dice);
-    *posisi = *posisi-dice;
-    printf("%s berada di petak %d.\n",nama, *posisi);
+void langkahMundur(Player *P,int dice){                 // mengurangkan nilai pada posisi player sesuai roll dadu
+    printf("%s mundur %d langkah.\n",Nama(*P), dice);
+    Posisi(*P) = Posisi(*P)-dice;
+    printf("%s berada di petak %d.\n",Nama(*P), Posisi(*P)+1);
 }
-int roll(char nama[255],char map[100], int *posisi, int maxroll){   // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
-    int dice=nomor(maxroll);                                         // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
-    printf("%s mendapatkan angka %d\n", nama, dice); 
-    if (map[(*posisi+dice)]=='.' && map[(*posisi-dice)]=='.'){
+int roll(Player *P,char map[100], int maxroll){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
+    int dice=getNomor(maxroll);                            // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
+    printf("%s mendapatkan angka %d\n", Nama(*P), dice); 
+    if (map[(Posisi(*P)+dice)]=='.' && map[(Posisi(*P)-dice)]=='.'){
         int kemana;  // pilihan untuk maju atau mundur
-        printf("%s dapat maju dan mundur.\n",nama);
-        printf("Ke mana %s mau bergerak:\n",nama);
-        printf("  1.%d\n  2.%d\n", *posisi-dice, *posisi+dice);
+        printf("%s dapat maju dan mundur.\n",Nama(*P));
+        printf("Ke mana %s mau bergerak:\n",Nama(*P));
+        printf("  1.%d\n  2.%d\n", Posisi(*P)-dice+1, Posisi(*P)+dice+1);
         scanf("%d",&kemana);
         if (kemana==1){
-            langkahMundur(nama,posisi,dice);
+            langkahMundur(P,dice);
         }else if(kemana==2){
-            langkahMaju(nama,posisi,dice);
+            langkahMaju(P,dice);
         }else{
             printf("Input salah! ulangi Roll\n");
         }
-    }else if(map[(*posisi+dice)]=='.'){
-        printf("%s dapat maju.\n",nama);
-        langkahMaju(nama,posisi,dice);
-    }else if(map[(*posisi-dice)]=='.'){
-        printf("%s dapat mundur.\n",nama);
-        langkahMundur(nama,posisi,dice);
+    }else if(map[(Posisi(*P)+dice)]=='.'){
+        printf("%s dapat maju.\n",Nama(*P));
+        langkahMaju(P,dice);
+    }else if(map[(Posisi(*P)-dice)]=='.'){
+        printf("%s dapat mundur.\n",Nama(*P));
+        langkahMundur(P,dice);
     }else{
-        printf("%s tidak dapat bergerak.\n",nama);
+        printf("%s tidak dapat bergerak.\n",Nama(*P));
     }
     return 0;
 }
