@@ -24,7 +24,7 @@ int petak;
     }
     else /* fungsi teleporter*/
     {   
-       printf("Petak %d memiliki teleporter menuju %d.\n",petak); /* perlu petak teleporter*/
+       printf("Petak %d memiliki teleporter menuju %d.\n",petak); /* kurang petak teleporter*/
     }
 
 }
