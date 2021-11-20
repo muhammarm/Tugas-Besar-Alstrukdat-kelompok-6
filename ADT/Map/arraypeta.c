@@ -9,6 +9,7 @@
 void MakeEmptyMap (TabPeta *P)
 /* Menghasilkan tabel peta P kosong dengan kapasitas (IdxMaxPetak-IdxMinPetak+1+1) */
 /*Tabel Peta di set dengan default char '?' dan tanpa teleporter */
+/*ALGORITMA*/
 {
     for (int i=0;i<=IdxMaxPetak;i++)
     {
@@ -27,6 +28,7 @@ void PosisiPemain (TabPeta P, int PosisiPemain, int PanjangPeta)
 /*LengthPeta merupakan panjang peta dibaca melalui file konfigurasi*/
 /*menampilkan state peta dan posisi pemain pada peta*/
 /* posisi pemain digambarkan menggunakan '*' (bintang)*/
+/*ALGORITMA*/
 {
     for(int i=1;i<=PanjangPeta;i++){
         if (i == PosisiPemain){
@@ -42,12 +44,14 @@ void PosisiPemain (TabPeta P, int PosisiPemain, int PanjangPeta)
 boolean IsPetakEmpty (TabPeta P, int CekPetak) 
 /* Mengirimkan true/mengecek jika petak kosong("."), mengirimkan false jika tidak */
 /*pemain hanya dapet berdiri di petak kosong*/
+/*ALGORITMA*/
 {
    return (P.Peta[CekPetak].Petak == '.');
 }
 
 boolean IsPetakForbidden (TabPeta P, int CekPetak) 
 /* Mengirimkan true/mengecek jika petak terlarang ('#'),mengirimkan false jika tidak*/
+/*ALGORITMA*/
 {
     return (P.Peta[CekPetak].Petak == '#');
 }

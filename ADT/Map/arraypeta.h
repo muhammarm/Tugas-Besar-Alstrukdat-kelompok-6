@@ -33,10 +33,10 @@ void ReadMap (TabPeta *P);
 void PosisiPemain(TabPeta P, int PosisiPemain, int PanjangPeta);
 /*menampilkan posisi pemain pada peta*/
 
-boolean IsPetakEmpty (TabPeta P,int MarkPetak); /* mark petak == petak yang ditandai */
+boolean IsPetakEmpty (TabPeta P,int CekPetak); 
 /* Mengirimkan true jika petak kosong("."), mengirimkan false jika tidak */
 
-boolean IsPetakForbidden(TabPeta P,int MarkPetak); /* mark petak == petak yang ditandai */
+boolean IsPetakForbidden(TabPeta P,int CekPetak); 
 /* Mengirimkan true jika petak terlarang ('#'),mengirimkan false jika tidak*/
 
 #endif
