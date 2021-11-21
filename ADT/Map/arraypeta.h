@@ -1,4 +1,5 @@
-/*modifikasi dari array.h */
+/*arraypeta merupakan modifikasi dari array.h */
+/*File:arraypeta.h*/
 #ifndef ARRAYPETA_H
 #define ARRAYPETA_H
 
