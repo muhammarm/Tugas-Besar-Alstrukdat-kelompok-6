@@ -42,17 +42,3 @@ void PosisiPemain (TabPeta P, int PosisiPemain, int PanjangPeta)
     printf("%d",PosisiPemain);
 }
 
-boolean IsPetakEmpty (TabPeta P, int CekPetak) 
-/* Mengirimkan true/mengecek jika petak kosong("."), mengirimkan false jika tidak */
-/*pemain hanya dapet berdiri di petak kosong*/
-/*ALGORITMA*/
-{
-   return (P.Peta[CekPetak].Petak == '.');
-}
-
-boolean IsPetakForbidden (TabPeta P, int CekPetak) 
-/* Mengirimkan true/mengecek jika petak terlarang ('#'),mengirimkan false jika tidak*/
-/*ALGORITMA*/
-{
-    return (P.Peta[CekPetak].Petak == '#');
-}
