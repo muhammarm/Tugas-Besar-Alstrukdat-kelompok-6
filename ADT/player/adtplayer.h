@@ -46,8 +46,6 @@ typedef struct
     boolean IsMirror[IdxMax - IdxMin +1];
     boolean IsSenterPengecil[IdxMax - IdxMin+1];
     boolean IsSenterPembesar[IdxMax - IdxMin +1];
-    boolean IsMesinPenukarPos[IdxMax-IdxMin+1];
-    boolean IsTeknologiFail[IdxMax-IdxMin+1];
 } Pemain;
 
 /*Selektor(array)*/
@@ -59,9 +57,6 @@ typedef struct
 #define IsMirror(P) (P).IsMirror
 #define IsSenterPengecil(P) (P).IsSenterPengecil
 #define IsSenterPembesar(P) (P).IsSenterPembesar
-#define IsMesinPenukarPos(P) (P).IsMesinPenukarPos
-#define IsTeknologiFail(P) (P).IsTeknologiFail
-
 
 
 void CreateEmptyPlayerList(Pemain *P);

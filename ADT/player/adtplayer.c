@@ -37,8 +37,6 @@ void addPlayer(Pemain *P, int n)
         IsSenterPembesar(*P)[x] = false;
         IsSenterPengecil(*P)[x] = false;
         IsMirror(*P)[x] = false;
-        IsMesinPenukarPos(*P)[x] = false;
-        IsTeknologiFail(*P)[x] = false;
     }
     Neff(*P) = n;
 }
