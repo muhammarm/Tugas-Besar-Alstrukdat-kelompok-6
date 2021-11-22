@@ -36,7 +36,7 @@ typedef struct {
 /*Data player menggunakan implementasi array*/
 typedef int ElType;
 
-typedef struct 
+typedef struct
 {
     int Neff;
     char NamaPemain[IdxMax-IdxMin+1][16];
@@ -66,6 +66,20 @@ typedef struct
 
 void CreateEmptyPlayerList(Pemain *P);
 /* Membuat List Player yang kosong*/
+/* I.S. P terdefinisi
+   F.S Sebuah list P berisi pemain terbentuk
+*/
+
+void addPlayer (Pemain *P, int n);
+/* Prosedur untuk membuat list pemain sebanyak n pemain */
+/* I.S array Pemain.NamaPemain, Pemain.Pos, Pemain.IsTeleporter, Pemain.IsImmune, dan Neff berisi 0
+   F.S array Pemain.NamaPemain, Pemain.Pos, Pemain.IsTeleporter, Pemain.IsImmune, dan Neff terisi sebanyak n buah
+*/
+
+int getPemainIdx(Pemain P, char *Nama);
+/* Mereturn index pemain dalam array NamaPemain sebagai parameter input.
+   Apabila input tidak terdapat di dalam list NamaPemain, maka akan mereturn IdxUndef
+*/
 
 boolean IsPemainTeleported(Pemain P, char *NamaPemain);
 /* Menghasilkan True jika pemain dengan parameter NamaPemain terkena portal atau sebaliknya*/
@@ -83,7 +97,7 @@ boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain);
 /*Menghasilkan True jika pemain dengan parameter NamaPemain memakai cermin pengganda atau sebaliknya*/
 
 
- 
+
 
 
 
