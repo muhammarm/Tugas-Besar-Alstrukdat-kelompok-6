@@ -30,18 +30,22 @@ int PetakX;
 {
     printf("Masukkan petak: ");
     scanf("%d", &PetakX);
-    if ( IsPetakForbidden (*P,PetakX))
+    if (IsPetakEmpty(*P,PetakX))
+    {
+        if ((*P).Peta[PetakX].TP==-1)
+        {
+            printf("Petak %d merupakan petak kosong.\n",PetakX);
+        }
+        else
+        {
+            printf("Petak %d memiliki teleporter menuju %d.\n",PetakX,(*P).Peta[PetakX].TP);
+        }
+    }
+    else
     {
         printf("Petak %d merupakan petak terlarang.\n",PetakX);
     }
-    else if (IsPetakEmpty(*P,PetakX))
-    {
-        printf("Petak %d merupakan petak kosong.\n",PetakX);
-    }
-    else /* fungsi teleporter*/
-    {   
-       printf("Petak %d memiliki teleporter menuju %d.\n",PetakX,(*P).Peta[PetakX].TP); /*TP indeks tujuan teleporter*/
-    }
+    printf("\n");
+    break;
 
-}
 
