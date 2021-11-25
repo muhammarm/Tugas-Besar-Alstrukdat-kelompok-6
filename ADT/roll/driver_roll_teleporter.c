@@ -2,8 +2,14 @@
 #include<stdlib.h>
 #include "roll.c"
 #include "teleporter.c"
+#include "../Map/arraypeta.h"
+
+char filename[100];
 
 int main(){
+    char filepath[] = "../../config/";
+    scanf("%s", &filename);
+    strncat(filepath, filename, 100);
     Player p1,p2;
     Tele l;
     int pilihan, maxroll, besarMap, banyakTele, masukTele, keluarTele;
@@ -15,7 +21,7 @@ int main(){
     CreatePlayer(&p2);
     scanf("%d",&besarMap); 
     scanf("%s",map);
-    scanf("%d",&maxroll);
+    maxroll = ReadMaxroll(filepath);
     scanf("%d",&banyakTele);
     for(int i=0; i<banyakTele; i++){
         scanf("%d %d",&masukTele,&keluarTele);

@@ -57,7 +57,8 @@ int roll(Player *P,char map[100], int minroll, int maxroll){         // memutar 
     }
     return 0;
 }
-int ReadMaxroll (char Filepath[255], int maxroll){          // Mengembalikan integer MaxRoll pada file config 
+int ReadMaxroll (char Filepath[255]){          // Mengembalikan integer MaxRoll pada file config 
+    int maxroll;
     STARTKATA(Filepath);
     ADVKATA();
     ADVKATA();
