@@ -43,12 +43,12 @@ void AddPemain(Pemain *P, int n)
 }
 
 /* Mendapatkan index pemain */
-int GetPemainIdx(Pemain P, char *SearchNama)
+int GetIdxPemain(Pemain P, char *Nama)
 {
     int x = IdxMin;
     int idxP = IdxUndef;
     while ( x <= IdxMax){
-        if(strcmp(SearchNama, P.NamaPemain[x]) != 0){  /* fungsi strcmp() membandingkan dua karakter string.Jika string equal/sama, maka fungsi mengembalikan nilai 0*/
+        if(strcmp(Nama, (P).NamaPemain[x]) != 0){  /* fungsi strcmp() membandingkan dua karakter string.Jika string equal/sama, maka fungsi mengembalikan nilai 0*/
             x++;
         }
         else {
@@ -62,7 +62,7 @@ int GetPemainIdx(Pemain P, char *SearchNama)
 int GetPosisiPemain(Pemain P, char *NamaPemain)
 /*mendapatkan informasi mengenai  mengenai posisi pemain berdasarkan parameter NamaPemain*/
 {
-    int idx = GetPemainIdx(P, NamaPemain);
+    int idx = GetIdxPemain(P, NamaPemain);
     if (idx != IdxUndef)
     {
         return (Pos(P)[idx]);
@@ -72,7 +72,7 @@ int GetPosisiPemain(Pemain P, char *NamaPemain)
 boolean IsPemainTeleported(Pemain P, char *NamaPemain)
 /* Menghasilkan True jika pemain dengan parameter NamaPemain terkena portal atau sebaliknya */
 {
-    int idx = GetPemainIdx(P, NamaPemain);
+    int idx = GetIdxPemain(P, NamaPemain);
     if (idx != IdxUndef){
         return (IsTeleporter(P)[idx]);
     }
@@ -81,7 +81,7 @@ boolean IsPemainTeleported(Pemain P, char *NamaPemain)
 boolean IsPemainImmune(Pemain P, char *NamaPemain)
 /*Menghasilkan True jika pemain dengan parameter NamaPemain sedang imun(buff) atau sebaliknya*/
 {
-    int idx = GetPemainIdx(P, NamaPemain);
+    int idx = GetIdxPemain(P, NamaPemain);
     if (idx != IdxUndef){
         return (IsImmune(P)[idx]);
     }
@@ -90,7 +90,7 @@ boolean IsPemainImmune(Pemain P, char *NamaPemain)
 boolean IsPemainSenterPengecil(Pemain P,char *NamaPemain)
 /* Menghasilkan True jika pemain dengan parameter NamaPemain memakai senter pengecil atau sebaliknya*/
 {
-    int idx = GetPemainIdx(P, NamaPemain);
+    int idx = GetIdxPemain(P, NamaPemain);
     if (idx != IdxUndef){
         return(IsSenterPengecil(P)[idx]);
     }
@@ -99,7 +99,7 @@ boolean IsPemainSenterPengecil(Pemain P,char *NamaPemain)
 boolean IsPemainSenterPembesar(Pemain P, char *NamaPemain)
 /*Menghasilkan True jika pemain dengan parameter NamaPemain memakai senter pembesar atau sebaliknya*/
 {
-    int idx = GetPemainIdx(P, NamaPemain);
+    int idx = GetIdxPemain(P, NamaPemain);
     if (idx != IdxUndef){
         return(IsSenterPembesar(P)[idx]);
     }
@@ -108,7 +108,7 @@ boolean IsPemainSenterPembesar(Pemain P, char *NamaPemain)
 boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain)
 /*Menghasilkan True jika pemain dengan parameter NamaPemain memakai cermin pengganda atau sebaliknya*/
 {
-    int idx = GetPemainIdx(P, NamaPemain);
+    int idx = GetIdxPemain(P, NamaPemain);
     if (idx != IdxUndef){
         return(IsMirror(P)[idx]);
     }

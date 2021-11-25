@@ -68,13 +68,13 @@ void CreateEmptyPlayerList(Pemain *P);
    F.S Sebuah list P berisi pemain terbentuk
 */
 
-void addPlayer (Pemain *P, int n);
+void AddPemain (Pemain *P, int n);
 /* Prosedur untuk membuat list pemain sebanyak n pemain */
 /* I.S array Pemain.NamaPemain, Pemain.Pos, Pemain.IsTeleporter, Pemain.IsImmune, dan Neff berisi 0
    F.S array Pemain.NamaPemain, Pemain.Pos, Pemain.IsTeleporter, Pemain.IsImmune, dan Neff terisi sebanyak n buah
 */
 
-int GetPemainIdx(Pemain P, char *SearchNama);
+int GetIdxPemain(Pemain P, char *Nama);
 /* Mereturn index pemain dalam array NamaPemain sebagai parameter input.
    Apabila input tidak terdapat di dalam list NamaPemain, maka akan mereturn IdxUndef
 */
