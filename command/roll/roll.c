@@ -4,57 +4,50 @@
 #include "arraypeta.h"
 #include "adtplayer.h"
 
-Player CreatePlayer (Player *P){
-    scanf("%s", &Nama(*P));
-    Posisi(*P)=0;
-}
-/* I.S. P sembarang   */
-/* F.S. Terbentuk player. Lihat definisi di atas. */
 
-int getNomor(int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
+int getNomor(int minroll, int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
 {
 	int nomor;
     srand(time(0));
-	A:nomor = rand() / (RAND_MAX / (maxroll + 1) + 1);
+	A:nomor = minroll + rand() / (RAND_MAX / (maxroll - minroll + 1) + 1);
 	if(nomor==0)
 		goto A;
 	else
 		return nomor;
 }
-void langkahMaju(Player *P,int dice){                   // menambahkan nilai pada posisi player sesuai roll dadu
-    printf("%s maju %d langkah.\n",Nama(*P), dice);
-    Posisi(*P) = Posisi(*P)+dice;
-    printf("%s berada di petak %d.\n",Nama(*P), Posisi(*P)+1);
+void langkahPemain(Pemain *P,int dice, int turn){                   // menambahkan nilai pada posisi player sesuai roll dadu
+    (*P).Pos[turn] = dice;
+    printf("%s berada di petak %d.\n",(*P).NamaPemain[turn], (*P).Pos[turn]);
 }
-void langkahMundur(Player *P,int dice){                 // mengurangkan nilai pada posisi player sesuai roll dadu
-    printf("%s mundur %d langkah.\n",Nama(*P), dice);
-    Posisi(*P) = Posisi(*P)-dice;
-    printf("%s berada di petak %d.\n",Nama(*P), Posisi(*P)+1);
-}
-int roll(Player *P,char map[100], int maxroll){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
-    int dice=getNomor(maxroll);                            // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
-    printf("%s mendapatkan angka %d\n", Nama(*P), dice); 
-    if (map[(Posisi(*P)+dice)]=='.' && map[(Posisi(*P)-dice)]=='.'){
+
+int roll(Pemain *P,TabPeta M, int minroll, int maxroll, int turn){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
+    int dice=getNomor(minroll, maxroll);                                    // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
+    printf("%s mendapatkan angka %d\n", (*P).NamaPemain[turn], dice); 
+    if (M.Peta[(*P).Pos[turn]+dice].Petak=='.' && M.Peta[(*P).Pos[turn]-dice].Petak=='.'){
         int kemana;  // pilihan untuk maju atau mundur
-        printf("%s dapat maju dan mundur.\n",Nama(*P));
-        printf("Ke mana %s mau bergerak:\n",Nama(*P));
-        printf("  1.%d\n  2.%d\n", Posisi(*P)-dice+1, Posisi(*P)+dice+1);
+        printf("%s dapat maju dan mundur.\n",(*P).NamaPemain[turn]);
+        printf("Ke mana %s mau bergerak:\n",(*P).NamaPemain[turn]);
+        printf("  1.%d\n  2.%d\n",(*P).Pos[turn]-dice ,(*P).Pos[turn]+dice);
         scanf("%d",&kemana);
         if (kemana==1){
-            langkahMundur(P,dice);
+            langkahPemain(P,(*P).Pos[turn]-dice);
+            printf("%s mundur %d langkah.\n",(*P).NamaPemain[turn], dice);
         }else if(kemana==2){
-            langkahMaju(P,dice);
+            langkahPemain(P,(*P).Pos[turn]+dice);
+            printf("%s maju %d langkah.\n",(*P).NamaPemain[turn], dice);
         }else{
             printf("Input salah! ulangi Roll\n");
         }
-    }else if(map[(Posisi(*P)+dice)]=='.'){
-        printf("%s dapat maju.\n",Nama(*P));
-        langkahMaju(P,dice);
-    }else if(map[(Posisi(*P)-dice)]=='.'){
-        printf("%s dapat mundur.\n",Nama(*P));
-        langkahMundur(P,dice);
+    }else if(M.Peta[(*P).Pos[turn]+dice].Petak=='.'){
+        printf("%s dapat maju.\n",(*P).NamaPemain[turn]);
+        printf("%s maju %d langkah.\n",(*P).NamaPemain[turn], dice);
+        langkahPemain(P,(*P).Pos[turn]+dice, turn);
+    }else if(M.Peta[(*P).Pos[turn]-dice].Petak=='.'){
+        printf("%s dapat mundur.\n",(*P).NamaPemain[turn]);
+        printf("%s mundur %d langkah.\n",(*P).NamaPemain[turn], dice);
+        langkahPemain(P,(*P).Pos[turn]-dice, turn);
     }else{
-        printf("%s tidak dapat bergerak.\n",Nama(*P));
+        printf("%s tidak dapat bergerak.\n",(*P).NamaPemain[turn]);
     }
     return 0;
 }
