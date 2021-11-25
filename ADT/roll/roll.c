@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "roll.h"
+#include "arraypeta.h"
 
 Player CreatePlayer (Player *P){
     scanf("%s", &Nama(*P));
@@ -56,4 +57,12 @@ int roll(Player *P,char map[100], int minroll, int maxroll){         // memutar 
     }
     return 0;
 }
+int ReadMaxroll (char Filepath[255], int maxroll){          // Mengembalikan integer MaxRoll pada file config 
+    STARTKATA(Filepath);
+    ADVKATA();
+    ADVKATA();
+    maxroll = KataToInt(CKata);
+    return maxroll;
+}
+
 
