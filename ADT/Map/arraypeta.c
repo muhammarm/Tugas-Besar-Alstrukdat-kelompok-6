@@ -48,21 +48,21 @@ void ReadMap (TabPeta *P, char Filepath[255])
 }
 
 /* Operasi Lainnya */
-void PosisiPemain (TabPeta P, int PosisiPemain) 
-/* I.S. : P dan PosisiPemain Terdefinisi
+void PosisiPemain (TabPeta P, int Posisi) 
+/* I.S. : P dan Posisi Terdefinisi
    F.S. : Posisi pemain pada peta ditampilkan ke layar dengan tanda '*'
-          serta menampilkan PosisiPemain */
+          serta menampilkan int Posisi setelahnya */
 {
     /* ALGORITMA */
     for(int i = 1;i <= P.Neff;i++){
-        if (i == PosisiPemain){
+        if (i == Posisi){
             printf("%c",'*');
         }
         else{
             printf("%c",P.Peta[i].Petak);
         }
     }
-    printf(" %d", PosisiPemain);
+    printf(" %d", Posisi);
 }
 
 int GetPetakTP (TabPeta P, int ElmtPetak)

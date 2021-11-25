@@ -46,10 +46,10 @@ void ReadMap (TabPeta *P, char Filepath[255]);
           dan teleporter pada file konfigurasi */
 
 /* Operasi Lainnya */
-void PosisiPemain(TabPeta P, int PosisiPemain);
-/* I.S. : P dan PosisiPemain Terdefinisi
+void PosisiPemain(TabPeta P, int Posisi);
+/* I.S. : P dan Posisi Terdefinisi
    F.S. : Posisi pemain pada peta ditampilkan ke layar dengan tanda '*'
-          serta menampilkan PosisiPemain */
+          serta menampilkan int Posisi setelahnya */
 
 int GetPetakTP (TabPeta P, int ElmtPetak);
 /* Mengembalikan integer indeks tujuan teleport
