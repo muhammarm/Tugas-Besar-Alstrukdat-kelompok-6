@@ -256,3 +256,14 @@ void makeSkill(address S, int idx){
             break;   
     }
 }
+
+void copy(LSkill awal, LSkill *copy){
+    LSkill A = awal;
+    while (A != Nil){
+        address S;
+        S = createSkillNode();
+        makeSkill(S, ids(A));
+        insSkill(copy, S);
+        A = NextSkill(A);
+    }
+}

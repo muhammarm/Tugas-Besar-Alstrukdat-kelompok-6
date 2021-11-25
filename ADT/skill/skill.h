@@ -44,4 +44,6 @@ void mesinPenukar(Pemain *P, int curr);
 
 void makeSkill(address S, int idx);
 
+void copy(LSkill awal, LSkill *copy);
+
 #endif
