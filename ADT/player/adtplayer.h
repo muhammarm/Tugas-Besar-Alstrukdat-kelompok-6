@@ -43,6 +43,7 @@ typedef struct
     boolean IsMirror[IdxMax - IdxMin +1];
     boolean IsSenterPengecil[IdxMax - IdxMin+1];
     boolean IsSenterPembesar[IdxMax - IdxMin +1];
+    boolean IsDoneRoll[IdxMax-IdxMin+1]; /*Player sudah melakukan roll*/
     LSkill Skills[IdxMax-IdxMin+1]; /*List Skill*/
 } Pemain;
 
@@ -55,7 +56,9 @@ typedef struct
 #define IsMirror(P) (P).IsMirror
 #define IsSenterPengecil(P) (P).IsSenterPengecil
 #define IsSenterPembesar(P) (P).IsSenterPembesar
+#define IsDoneRoll(P) (P).IsDoneRoll
 #define Skills(P) (P).Skills
+
 
 
 void CreateEmptyPlayerList(Pemain *P);

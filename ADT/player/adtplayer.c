@@ -37,6 +37,7 @@ void AddPemain(Pemain *P, int n)
         IsSenterPembesar(*P)[x] = false;
         IsSenterPengecil(*P)[x] = false;
         IsMirror(*P)[x] = false;
+        IsDoneRoll(*P)[x]= false;
         Skills(*P)[x]=Nil;
     }
     Neff(*P) = n;
