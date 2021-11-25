@@ -1,4 +1,5 @@
-/*
+/*  
+    Topik praktikum : stack.c
     Deskripsi : implementasi dari stack.h
 */
 #include "stack.h"
