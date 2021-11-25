@@ -1,4 +1,4 @@
-/*  
+/*
     Topik praktikum : stack.c
     Deskripsi : implementasi dari stack.h
 */
@@ -15,30 +15,45 @@ void CreateEmpty (Stack *S){
     Top(*S) = Nil;
 }
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty (Stack S){
+boolean IsEmptyStack (Stack S){
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
     return (Top(S) == Nil);
 }
-boolean IsFull (Stack S){
+boolean IsFullStack (Stack S){
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
     return (Top(S) == MaxEl);
 }
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push (Stack * S, infotype X){
+void Push (Stack * S, Pemain *P){
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-    Top(*S)++;
-    InfoTop(*S) = X;
-
+    if (IsEmptyStack(*S)){
+        Top(*S) = 1;
+    }
+    else {
+        Top(*S)++;
+    }
+    InfoTop(*S) = *P;
+    for (int x = 1; x <= (*P).Neff; x++){
+        (*S).P[Top(*S)].Skills[x] = Nil;
+        copy((*P).Skills[x], &(*S).P[Top(*S)].Skills[x]);
+    }
 }
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop (Stack * S, infotype* X){
+void Pop (Stack * S, Pemain *P, boolean *UndoSukses){
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-    *X = InfoTop(*S);
-     Top(*S)--;
+    if(IsEmptyStack(*S)){
+        printf("Tidak dapat melakukan undo!\n");
+        *UndoSukses = false;
+    }
+    else{
+        *P = InfoTop(*S);
+        Top(*S)--;
+        *UndoSukses = true;
+    }
 }
