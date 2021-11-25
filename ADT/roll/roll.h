@@ -25,7 +25,7 @@ Player CreatePlayer (Player *P);
 /* F.S. Terbentuk player. Lihat definisi di atas. */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
-int getNomor(int maxroll);  
+int getNomor(int minroll, int maxroll);  
 //fungsi untuk mendapatkan nomor random sebagai nomor dadu
 void langkahMaju(Player *P,int dice);  
 /* I.S. P terdefinisi
@@ -37,7 +37,7 @@ void langkahMundur(Player *P,int dice);
 */
 
 /****************** PROSES SEMUA ELEMEN PLAYER ******************/
-int roll(Player *P,char map[100], int maxroll); 
+int roll(Player *P,char map[100], int minroll, int maxroll); 
 // fungsi untuk memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
 // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
 #endif
