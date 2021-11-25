@@ -13,6 +13,7 @@
 #define IdxMin 1
 #define IdxUndef -999
 
+
 /* Definisi Type Data LinkedList */
 typedef struct ListSkillNode *address;
 typedef struct ListSkillNode {
@@ -35,7 +36,7 @@ typedef struct {
 
 /*Data player menggunakan implementasi array*/
 typedef int ElType;
-
+typedef address LSkill;/* List Skill*/
 typedef struct
 {
     int Neff;
@@ -46,6 +47,7 @@ typedef struct
     boolean IsMirror[IdxMax - IdxMin +1];
     boolean IsSenterPengecil[IdxMax - IdxMin+1];
     boolean IsSenterPembesar[IdxMax - IdxMin +1];
+    LSkill Skills[IdxMax-IdxMin+1]; /*List Skill*/
 } Pemain;
 
 /*Selektor(array)*/
@@ -57,6 +59,7 @@ typedef struct
 #define IsMirror(P) (P).IsMirror
 #define IsSenterPengecil(P) (P).IsSenterPengecil
 #define IsSenterPembesar(P) (P).IsSenterPembesar
+#define Skills(P) (P).Skills
 
 
 void CreateEmptyPlayerList(Pemain *P);
@@ -71,9 +74,14 @@ void addPlayer (Pemain *P, int n);
    F.S array Pemain.NamaPemain, Pemain.Pos, Pemain.IsTeleporter, Pemain.IsImmune, dan Neff terisi sebanyak n buah
 */
 
-int getPemainIdx(Pemain P, char *Nama);
+int GetPemainIdx(Pemain P, char *SearchNama);
 /* Mereturn index pemain dalam array NamaPemain sebagai parameter input.
    Apabila input tidak terdapat di dalam list NamaPemain, maka akan mereturn IdxUndef
+*/
+
+int GetPosisiPemain(Pemain P, char *NamaPemain);
+/*
+ mendapatkan informasi mengenai  mengenai posisi pemain berdasarkan parameter NamaPemain
 */
 
 boolean IsPemainTeleported(Pemain P, char *NamaPemain);

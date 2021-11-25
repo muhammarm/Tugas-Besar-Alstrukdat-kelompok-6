@@ -15,16 +15,16 @@ void CreateEmptyPlayerList(Pemain *P)
 }
 
 /* Membuat List Pemain sebanyak n pemain */
-void addPlayer(Pemain *P, int n)
+void AddPemain(Pemain *P, int n)
 {
     for (int x = 1; x<=n; x++){
-        printf("Masukan nama pemain %d: ", i);
+        printf("Masukan nama pemain %d: ", x);
         scanf("%s", &(NamaPemain(*P)[i]));
         int y = 1;
         while (y <= n){
             if(strcmp(NamaPemain(*P)[x], NamaPemain(*P)[y]) == 0 && y != x){
                 printf("Nama %s sudah digunakan!\n", NamaPemain(*P)[x]);
-                printf("Masukkan nama lain untuk pemain %d: ", i);
+                printf("Masukkan nama lain untuk pemain %d: ", x);
                 scanf("%s", &(NamaPemain(*P)[x]))
             }
             else{
@@ -37,16 +37,18 @@ void addPlayer(Pemain *P, int n)
         IsSenterPembesar(*P)[x] = false;
         IsSenterPengecil(*P)[x] = false;
         IsMirror(*P)[x] = false;
+        Skills(*P)[x]=Nil;
     }
     Neff(*P) = n;
 }
+
 /* Mendapatkan index pemain */
-int getPemainIdx(Pemain *P, char *Nama)
+int GetPemainIdx(Pemain P, char *SearchNama)
 {
     int x = IdxMin;
     int idxP = IdxUndef;
     while ( x <= IdxMax){
-        if(strcmp(Nama, P.NamaPemain[x]) != 0){
+        if(strcmp(SearchNama, P.NamaPemain[x]) != 0){  /* fungsi strcmp() membandingkan dua karakter string.Jika string equal/sama, maka fungsi mengembalikan nilai 0*/
             x++;
         }
         else {
@@ -57,46 +59,56 @@ int getPemainIdx(Pemain *P, char *Nama)
     return idxP;
 }
 
-boolean IsPemainTeleported(Pemain P, char *NamaPemain);
+int GetPosisiPemain(Pemain P, char *NamaPemain)
+/*mendapatkan informasi mengenai  mengenai posisi pemain berdasarkan parameter NamaPemain*/
+{
+    int idx = GetPemainIdx(P, NamaPemain);
+    if (idx != IdxUndef)
+    {
+        return (Pos(P)[idx]);
+    }
+}
+
+boolean IsPemainTeleported(Pemain P, char *NamaPemain)
 /* Menghasilkan True jika pemain dengan parameter NamaPemain terkena portal atau sebaliknya */
 {
-    int idx = getPemainIdx(P, NamaPemain);
+    int idx = GetPemainIdx(P, NamaPemain);
     if (idx != IdxUndef){
         return (IsTeleporter(P)[idx]);
     }
 }
 
-boolean IsPemainImmune(Pemain P, char *NamaPemain);
+boolean IsPemainImmune(Pemain P, char *NamaPemain)
 /*Menghasilkan True jika pemain dengan parameter NamaPemain sedang imun(buff) atau sebaliknya*/
 {
-    int idx = getPemainIdx(P, NamaPemain);
+    int idx = GetPemainIdx(P, NamaPemain);
     if (idx != IdxUndef){
         return (IsImmune(P)[idx]);
     }
 }
 
-boolean IsPemainSenterPengecil(Pemain P,char *NamaPemain);
+boolean IsPemainSenterPengecil(Pemain P,char *NamaPemain)
 /* Menghasilkan True jika pemain dengan parameter NamaPemain memakai senter pengecil atau sebaliknya*/
 {
-    int idx = getPemainIdx(P, char *NamaPemain);
+    int idx = GetPemainIdx(P, NamaPemain);
     if (idx != IdxUndef){
         return(IsSenterPengecil(P)[idx]);
     }
 }
 
-boolean IsPemainSenterPembesar(Pemain P, char *NamaPemain);
+boolean IsPemainSenterPembesar(Pemain P, char *NamaPemain)
 /*Menghasilkan True jika pemain dengan parameter NamaPemain memakai senter pembesar atau sebaliknya*/
 {
-    int idx = getPemainIdx(P, char *NamaPemain);
+    int idx = GetPemainIdx(P, NamaPemain);
     if (idx != IdxUndef){
         return(IsSenterPembesar(P)[idx]);
     }
 }
 
-boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain);
+boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain)
 /*Menghasilkan True jika pemain dengan parameter NamaPemain memakai cermin pengganda atau sebaliknya*/
 {
-    int idx = getPemainIdx(P, char *NamaPemain);
+    int idx = GetPemainIdx(P, NamaPemain);
     if (idx != IdxUndef){
         return(IsMirror(P)[idx]);
     }
