@@ -15,7 +15,7 @@ void langkahPemain(Pemain *P,int dice, int turn);
    F.S. mengurangkan/menambahkan nilai pada posisi player dengan roll dadu agar player menjadi mundur pada map
 */
 /****************** PROSES SEMUA ELEMEN PLAYER ******************/
-int roll(Pemain *P,TabPeta M, int minroll, int maxroll, int turn); 
+int roll(Pemain *P,TabPeta M, int maxroll, int turn); 
 // fungsi untuk memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
 // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
 int ReadMaxroll (char Filepath[255]);

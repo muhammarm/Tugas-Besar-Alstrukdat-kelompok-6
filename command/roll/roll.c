@@ -20,8 +20,15 @@ void langkahPemain(Pemain *P,int dice, int turn){                   // menambahk
     printf("%s berada di petak %d.\n",(*P).NamaPemain[turn], (*P).Pos[turn]);
 }
 
-int roll(Pemain *P,TabPeta M, int minroll, int maxroll, int turn){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
-    int dice=getNomor(minroll, maxroll);                                    // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
+int roll(Pemain *P,TabPeta M, int maxroll, int turn){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
+    int dice;
+    if((*P).IsSenterPembesar[turn]){
+        dice = getNomor(floor(maxroll/2),maxroll);
+    }else if((*P).IsSenterPengecil){
+        dice = getNomor(1,floor(maxroll/2));
+    }else{
+        dice = getNomor(1,maxroll);
+    }                                
     printf("%s mendapatkan angka %d\n", (*P).NamaPemain[turn], dice); 
     if (M.Peta[(*P).Pos[turn]+dice].Petak=='.' && M.Peta[(*P).Pos[turn]-dice].Petak=='.'){
         int kemana;  // pilihan untuk maju atau mundur
