@@ -2,11 +2,17 @@
 #include<stdlib.h>
 #include "roll.c"
 #include "teleporter.c"
+#include "../Map/arraypeta.h"
+
+char filename[100];
 
 int main(){
+    char filepath[] = "../../config/";
+    scanf("%s", &filename);
+    strncat(filepath, filename, 100);
     Player p1,p2;
     Tele l;
-    int pilihan, maxroll, besarMap, banyakTele, masukTele, keluarTele;
+    int pilihan, maxroll, besarMap, banyakTele, masukTele, keluarTele, minroll = 1;
     char map[besarMap];
     CreateEmptyTele(&l);
     printf("Masukkan nama Player 1: ");
@@ -15,7 +21,7 @@ int main(){
     CreatePlayer(&p2);
     scanf("%d",&besarMap); 
     scanf("%s",map);
-    scanf("%d",&maxroll);
+    maxroll = ReadMaxroll(filepath);
     scanf("%d",&banyakTele);
     for(int i=0; i<banyakTele; i++){
         scanf("%d %d",&masukTele,&keluarTele);
@@ -26,11 +32,11 @@ int main(){
         scanf("%d",&pilihan);
         switch(pilihan){
             case 1:
-                roll(&p1,map,maxroll);
+                roll(&p1,map,minroll,maxroll);
                 teleporter(l,&p1,besarMap);
                 break;
             case 2:
-                roll(&p2,map,maxroll);
+                roll(&p2,map,minroll,maxroll);
                 teleporter(l,&p2,besarMap);
                 break;
             case 3:exit(0); break;

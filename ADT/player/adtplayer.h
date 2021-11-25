@@ -101,7 +101,7 @@ boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain);
 
 
 
-
+#endif
 
 
 

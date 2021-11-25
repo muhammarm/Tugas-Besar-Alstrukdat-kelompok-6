@@ -3,7 +3,7 @@
 #ifndef roll_H
 #define roll_H
 
-#include "boolean.h"
+#include "../Map/arraypeta.h"
 
 /* Definisi Type Data */
 typedef struct {
@@ -40,4 +40,8 @@ void langkahMundur(Player *P,int dice);
 int roll(Player *P,char map[100], int minroll, int maxroll); 
 // fungsi untuk memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
 // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
+int ReadMaxroll (char Filepath[255]);
+/* I.S. : Sembarang
+   F.S. : Mengembalikan integer MaxRoll pada file config */
+
 #endif
