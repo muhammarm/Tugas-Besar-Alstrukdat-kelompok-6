@@ -30,10 +30,10 @@ int roll(Pemain *P,TabPeta M, int minroll, int maxroll, int turn){         // me
         printf("  1.%d\n  2.%d\n",(*P).Pos[turn]-dice ,(*P).Pos[turn]+dice);
         scanf("%d",&kemana);
         if (kemana==1){
-            langkahPemain(P,(*P).Pos[turn]-dice);
+            langkahPemain(P,(*P).Pos[turn]-dice, turn);
             printf("%s mundur %d langkah.\n",(*P).NamaPemain[turn], dice);
         }else if(kemana==2){
-            langkahPemain(P,(*P).Pos[turn]+dice);
+            langkahPemain(P,(*P).Pos[turn]+dice, turn);
             printf("%s maju %d langkah.\n",(*P).NamaPemain[turn], dice);
         }else{
             printf("Input salah! ulangi Roll\n");
