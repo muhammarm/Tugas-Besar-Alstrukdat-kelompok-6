@@ -19,13 +19,13 @@ void AddPemain(Pemain *P, int n)
 {
     for (int x = 1; x<=n; x++){
         printf("Masukan nama pemain %d: ", x);
-        scanf("%s", &(NamaPemain(*P)[i]));
+        scanf("%s", &(NamaPemain(*P)[x]));
         int y = 1;
         while (y <= n){
             if(strcmp(NamaPemain(*P)[x], NamaPemain(*P)[y]) == 0 && y != x){
                 printf("Nama %s sudah digunakan!\n", NamaPemain(*P)[x]);
                 printf("Masukkan nama lain untuk pemain %d: ", x);
-                scanf("%s", &(NamaPemain(*P)[x]))
+                scanf("%s", &(NamaPemain(*P)[x]));
             }
             else{
                 y++;

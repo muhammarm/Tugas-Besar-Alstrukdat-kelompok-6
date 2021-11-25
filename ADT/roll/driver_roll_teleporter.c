@@ -32,11 +32,11 @@ int main(){
         scanf("%d",&pilihan);
         switch(pilihan){
             case 1:
-                roll(&p1,map,minroll,maxroll);
+                roll(&p1,map,maxroll);
                 teleporter(l,&p1,besarMap);
                 break;
             case 2:
-                roll(&p2,map,minroll,maxroll);
+                roll(&p2,map,maxroll);
                 teleporter(l,&p2,besarMap);
                 break;
             case 3:exit(0); break;

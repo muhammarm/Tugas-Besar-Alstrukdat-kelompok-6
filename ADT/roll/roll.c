@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include "roll.h"
 #include "arraypeta.h"
+#include "adtplayer.h"
 
 Player CreatePlayer (Player *P){
     scanf("%s", &Nama(*P));
@@ -10,11 +11,11 @@ Player CreatePlayer (Player *P){
 /* I.S. P sembarang   */
 /* F.S. Terbentuk player. Lihat definisi di atas. */
 
-int getNomor(int minroll, int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
+int getNomor(int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
 {
 	int nomor;
     srand(time(0));
-	A:nomor = minroll + rand() / (RAND_MAX / (maxroll - minroll + 1) + 1);
+	A:nomor = rand() / (RAND_MAX / (maxroll + 1) + 1);
 	if(nomor==0)
 		goto A;
 	else
@@ -30,8 +31,8 @@ void langkahMundur(Player *P,int dice){                 // mengurangkan nilai pa
     Posisi(*P) = Posisi(*P)-dice;
     printf("%s berada di petak %d.\n",Nama(*P), Posisi(*P)+1);
 }
-int roll(Player *P,char map[100], int minroll, int maxroll){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
-    int dice=getNomor(minroll, maxroll);                            // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
+int roll(Player *P,char map[100], int maxroll){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
+    int dice=getNomor(maxroll);                            // Lalu, menanyakan pemain untuk memilih antara maju dan mundur.
     printf("%s mendapatkan angka %d\n", Nama(*P), dice); 
     if (map[(Posisi(*P)+dice)]=='.' && map[(Posisi(*P)-dice)]=='.'){
         int kemana;  // pilihan untuk maju atau mundur

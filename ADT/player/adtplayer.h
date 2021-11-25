@@ -16,27 +16,23 @@
 
 /* Definisi Type Data LinkedList */
 typedef struct ListSkillNode *address;
+typedef address LSkill;/* List Skill*/
 typedef struct ListSkillNode {
     address NextSkill;
     char NamaSkill[25];  /* deklarasi string sepanjang 25 karakter */
+    int ids;
+    void (*buff)(Pemain *, int);
 } SkillNode;
-typedef struct {
-    address FirstSkill;
-}Skill;
-
-/* Definisi list : */
-/* List kosong : First(L) = Nil */
-/* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
-/* Elemen terakhir list : jika addressnya Last, maka Next(Last)=Nil */
 
 /*notasi akses(linked list)*/
-#define FIRSTSKILL(P) (P).FirstSkill
-#define NEXTSKILL(P) (P)->NextSkill
-#define NAMASKILL(P) (P)->NamaSkill
+#define ids(P) (P)->ids
+#define NextSkill(P) (P)->NextSkill
+#define NamaSkill(P) (P)->NamaSkill
+#define buff(P) (P)->buff
 
 /*Data player menggunakan implementasi array*/
 typedef int ElType;
-typedef address LSkill;/* List Skill*/
+
 typedef struct
 {
     int Neff;
