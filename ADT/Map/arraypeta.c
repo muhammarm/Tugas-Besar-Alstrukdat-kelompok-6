@@ -1,44 +1,81 @@
-/* *** ABSTRACT DATA TYPE ARRAYPETA *** */
-/* File : arraypeta.c*/
+/* File arraypeta.c*/
+/* Implementasi arraypeta.h */
 
-#include "arraypeta.h"
-#include "mesin_kar.h"
-#include "mesin_kata.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "arraypeta.h"
 
+/* Konstruktor */
 void MakeEmptyMap (TabPeta *P)
-/* Menghasilkan tabel peta P kosong dengan kapasitas (IdxMaxPetak-IdxMinPetak+1+1) */
-/*Tabel Peta di set dengan default char '?' dan tanpa teleporter */
-/*ALGORITMA*/
+/* I.S. : P Sembarang
+   F.S. : Terbentuk TabPeta P kosong dengan Neff = 0 
+          dan setiap petak diset '?' serta tanpa teleporter */
 {
-    for (int i=0;i<=IdxMaxPetak;i++)
+    /* ALGORITMA */
+    (*P).Neff = 0;
+    for (int i = 0;i <= IdxMaxPetak;i++)
     {
         (*P).Peta[i].Petak = '?';
         (*P).Peta[i].TP = NoTP;
     }
 }
 
-void ReadMap (TabPeta *P)
-/* Menghasilkan tabel peta P sesuai dengan peta pada file konfigurasi */
+/* Pengisian TabPeta */
+void ReadMap (TabPeta *P, char Filepath[255])
+/* I.S. : P Sembarang
+   F.S. : Terbentuk TabPeta P sesuai dengan data peta 
+          dan teleporter pada file konfigurasi */
 {
-
+    /* KAMUS LOKAL */
+    int nbtele, Elmtpetak;
+    /* ALGORITMA */
+    MakeEmptyMap(&(*P));
+    STARTKATA(Filepath);
+    (*P).Neff = KataToInt(CKata);
+    ADVKATA();
+    for (int i = 1;i <= (*P).Neff;i++){
+        (*P).Peta[i].Petak = CKata.TabKata[i];
+    }
+    ADVKATA();
+    ADVKATA();
+    nbtele = KataToInt(CKata);
+    for (int i = 1;i <= nbtele;i++){
+        ADVKATA();
+        Elmtpetak = KataToInt(CKata);
+        ADVKATA();
+        (*P).Peta[Elmtpetak].TP = KataToInt(CKata);
+    }
 }
 
-void PosisiPemain (TabPeta P, int PosisiPemain, int PanjangPeta) 
-/*LengthPeta merupakan panjang peta dibaca melalui file konfigurasi*/
-/*menampilkan state peta dan posisi pemain pada peta*/
-/* posisi pemain digambarkan menggunakan '*' (bintang)*/
-/*ALGORITMA*/
+/* Operasi Lainnya */
+void PosisiPemain (TabPeta P, int PosisiPemain) 
+/* I.S. : P dan PosisiPemain Terdefinisi
+   F.S. : Posisi pemain pada peta ditampilkan ke layar dengan tanda '*'
+          serta menampilkan PosisiPemain */
 {
-    for(int i=1;i<=PanjangPeta;i++){
+    /* ALGORITMA */
+    for(int i = 1;i <= P.Neff;i++){
         if (i == PosisiPemain){
             printf("%c",'*');
         }
-        else{ /*menulis petak selanjutnya*/
-            printf("%c",P.Peta[i]);
+        else{
+            printf("%c",P.Peta[i].Petak);
         }
     }
-    printf("%d",PosisiPemain);
+    printf(" %d", PosisiPemain);
+}
+
+int GetPetakTP (TabPeta P, int ElmtPetak)
+/* Mengembalikan integer indeks tujuan teleport
+   dari petak berindeks ElmtPetak pada TabPeta P */
+{
+    return (P.Peta[ElmtPetak].TP);
+}
+
+char GetPetakInfo (TabPeta P, int ElmtPetak)
+/* Mengembalikan char petak ('.' atau '#')
+   dari petak berindeks ElmtPetak pada TabPeta P */
+{
+    return (P.Peta[ElmtPetak].Petak);
 }
 
