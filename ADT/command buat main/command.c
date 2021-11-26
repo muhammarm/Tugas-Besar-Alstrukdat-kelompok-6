@@ -170,8 +170,23 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
 
         case 5:
         /*Berisi command Roll*/
+        if(!(*P).IsDoneRoll[PlayerTurn]){
+            int maxroll = 0;
+            roll(P,Peta,maxroll,PlayerTurn)
+            (*P).IsDoneRoll[PlayerTurn] = true ;
+            printf("\n") ;
+        }else{
+            printf("Pemain tidak dapat melakukan roll 2 kali.\n") ;
+        }
 
-
+        if ((*P).Pos[PlayerTurn] == (*Peta).Neff) {
+            flag = true ;
+            printf("%s telah mencapai ujung.\n", (*P).NamaPemain[PlayerTurn]) ;
+            printf("Pemenang game ini adalah %s.\n", (*P).NamaPemain[PlayerTurn]) ;
+            *EndGame = true ;
+            *EndRonde = true ;
+        }
+                break ;
         case 6:
         /*Berisi command Undo */
         *EndRonde = true;
