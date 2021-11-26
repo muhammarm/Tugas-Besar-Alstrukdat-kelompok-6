@@ -22,9 +22,10 @@ void langkahPemain(Pemain *P,int dice, int turn){                   // menambahk
 
 int roll(Pemain *P,TabPeta M, int maxroll, int turn){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
     int dice;
+    boolean move = false;
     if((*P).IsSenterPembesar[turn]){
         dice = getNomor(floor(maxroll/2),maxroll);
-    }else if((*P).IsSenterPengecil){
+    }else if((*P).IsSenterPengecil[turn]){
         dice = getNomor(1,floor(maxroll/2));
     }else{
         dice = getNomor(1,maxroll);
@@ -39,11 +40,11 @@ int roll(Pemain *P,TabPeta M, int maxroll, int turn){         // memutar dadu da
         if (kemana==1){
             printf("%s mundur %d langkah.\n",(*P).NamaPemain[turn], dice);
             langkahPemain(P,(*P).Pos[turn]-dice, turn);
-            
+            move = true;
         }else if(kemana==2){
             printf("%s maju %d langkah.\n",(*P).NamaPemain[turn], dice);
             langkahPemain(P,(*P).Pos[turn]+dice, turn);
-            
+            move= true;
         }else{
             printf("Input salah! ulangi Roll\n");
         }
@@ -51,12 +52,51 @@ int roll(Pemain *P,TabPeta M, int maxroll, int turn){         // memutar dadu da
         printf("%s dapat maju.\n",(*P).NamaPemain[turn]);
         printf("%s maju %d langkah.\n",(*P).NamaPemain[turn], dice);
         langkahPemain(P,(*P).Pos[turn]+dice, turn);
+        move = true;
     }else if(M.Peta[(*P).Pos[turn]-dice].Petak=='.'){
         printf("%s dapat mundur.\n",(*P).NamaPemain[turn]);
         printf("%s mundur %d langkah.\n",(*P).NamaPemain[turn], dice);
         langkahPemain(P,(*P).Pos[turn]-dice, turn);
+        move = true;
     }else{
         printf("%s tidak dapat bergerak.\n",(*P).NamaPemain[turn]);
+    }
+    if (move){
+        if (M.Peta[(*P).pos[turn]].TP == -1) {
+            printf("%s tidak menemukan teleporter.\n", (*P).NamaPemain[turn]);
+        }else{
+            printf("%s menemukan teleporter.\n", (*P).NamaPemain[turn]) ;
+            if ((*P).isImmune[turn]) {
+                printf("%s memiliki imunitas teleport.\n", (*P).NamaPemain[turn]) ;
+                printf("Apakah %s ingin teleport (Y/N)? ", (*P).NamaPemain[turn]) ;
+                boolean televalid = false ;
+                char asktele;
+                while (!televalid) {
+                    scanf("%c", &asktele) ;
+                    if (asktele == 'Y') {
+                        (*P).Pos[turn] = M.Peta[(*P).Pos[turn].TP ;
+                        printf("%s teleport ke petak %d.\n", (*P).NamaPemain[turn], (*P).Pos[turn]) ;
+                        televalid = true ;
+                    }else if (asktele == 'N') {
+                        printf("%s tidak teleport.\n", (*P).NamaPemain[turn]) ;
+                        (*P).isImmune[turn] = false ;
+                        printf("Buff imunitas teleport hilang.\n") ;
+                        televalid = true ;
+                    }else {
+                        printf("Input Salah! Masukkan Y/N.\n") ;
+                    }
+                }
+            }else{
+                printf("%s tidak memiliki imunitas teleport.\n", (*P).NamaPemain[turn]) ;
+                (*P).Pos[turn] = M.Peta[(*P).Pos[turn].TP;
+                printf("%s teleport ke petak %d.\n", (*P).NamaPemain[turn], (*P).Pos[turn]) ;
+            }
+        }
+    }
+    (*P).isDoneRoll[turn] = true;
+    printf("\n");
+    else{
+        printf("Tidak dapat melakukan roll 2 kali dalam 1 turn.\n\n") ;
     }
     return 0;
 }
