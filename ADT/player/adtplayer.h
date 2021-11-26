@@ -61,7 +61,7 @@ typedef struct
 
 
 
-void CreateEmptyPlayerList(Pemain *P);
+void CreateEmptyPemainList(Pemain *P);
 /* Membuat List Player yang kosong*/
 /* I.S. P terdefinisi
    F.S Sebuah list P berisi pemain terbentuk

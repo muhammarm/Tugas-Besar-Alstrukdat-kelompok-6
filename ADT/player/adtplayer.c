@@ -8,7 +8,7 @@
 #include <string.h>
 
 /* Membuat List Pemain yang kosong */
-void CreateEmptyPlayerList(Pemain *P)
+void CreateEmptyPemainList(Pemain *P)
 {
     (*P).Neff = 0;
 
