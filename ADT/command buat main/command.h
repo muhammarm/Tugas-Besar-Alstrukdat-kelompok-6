@@ -12,6 +12,6 @@
 #include "mesin_kar.h"
 #include "mesin_kata.h"
 
-/*prosedur command*/
+/*prosedur commandd*/
 void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde); /* SumRonde==Jumlah Ronde */
 #endif
