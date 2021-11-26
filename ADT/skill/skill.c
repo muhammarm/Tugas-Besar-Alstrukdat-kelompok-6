@@ -1,5 +1,4 @@
 #include "skill.h"
-#include "adtplayer.h"
 #include <stdlib.h>
 #include <stdio.h>
 

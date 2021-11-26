@@ -6,9 +6,9 @@
 #ifndef stackt_H
 #define stackt_H
 
-#include "ADT/player/boolean.h"
-#include "ADT/player/adtplayer.h"
-#include "ADT/skill/skill.h"
+#include "../Boolean/boolean.h"
+#include "../player/adtplayer.h"
+#include "../skill/skill.h"
 
 #define Nil 0
 #define MaxEl 10

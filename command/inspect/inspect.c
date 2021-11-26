@@ -8,42 +8,42 @@
 
 boolean IsPetakEmpty (TabPeta P, int CekPetak) 
 /* Mengirimkan true/mengecek jika petak kosong("."), mengirimkan false jika tidak */
-/*pemain hanya dapet berdiri di petak kosong*/
-/*ALGORITMA*/
+/* pemain hanya dapet berdiri di petak kosong */
 {
-   return (P.Peta[CekPetak].Petak == '.');
+    /* ALGORITMA */
+    return (GetPetakInfo(P, CekPetak) == '.');
 }
 
 boolean IsPetakForbidden (TabPeta P, int CekPetak) 
-/* Mengirimkan true/mengecek jika petak terlarang ('#'),mengirimkan false jika tidak*/
-/*ALGORITMA*/
+/* Mengirimkan true/mengecek jika petak terlarang ('#'), mengirimkan false jika tidak */
 {
-    return (P.Peta[CekPetak].Petak == '#');
+    /* ALGORITMA */
+    return (GetPetakInfo(P, CekPetak) == '#');
 }
 
-void inspect(TabPeta *P)
-/* Peta dari file config terbaca*/
-/* meminta suatu petak X, lalu melihat apakah ada teleporter di suatu petak X*/
-/*KAMUS LOKAL */
-int PetakX;
-/*ALGORITMA*/
+void inspect (TabPeta P)
+/* Peta dari file config terbaca */
+/* meminta suatu petak X, lalu melihat apakah ada teleporter di suatu petak X */
 {
+    /* KAMUS LOKAL */
+    int PetakX;
+    /* ALGORITMA */
     printf("Masukkan petak: ");
     scanf("%d", &PetakX);
-    if (IsPetakEmpty(*P,PetakX))
+    if (IsPetakEmpty(P, PetakX))
     {
-        if ((*P).Peta[PetakX].TP==-1)
+        if (GetPetakTP(P, PetakX) == NoTP)
         {
-            printf("Petak %d merupakan petak kosong.\n",PetakX);
+            printf("Petak %d merupakan petak kosong.\n", PetakX);
         }
         else
         {
-            printf("Petak %d memiliki teleporter menuju %d.\n",PetakX,(*P).Peta[PetakX].TP);
+            printf("Petak %d memiliki teleporter menuju %d.\n", PetakX, GetPetakTP(P, PetakX));
         }
     }
     else
     {
-        printf("Petak %d merupakan petak terlarang.\n",PetakX);
+        printf("Petak %d merupakan petak terlarang.\n", PetakX);
     }
     printf("\n");
 }

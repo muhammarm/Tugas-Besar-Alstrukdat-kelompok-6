@@ -74,7 +74,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                     flag = true;
                 }
                 else{
-                    printOne(P, PlayerTurn);
+                    printAll(P, PlayerTurn);
                 }
                 printf("\n");
                 printf("Tekan 0 untuk keluar. Masukkan bilangan negatif untuk membuang skill");

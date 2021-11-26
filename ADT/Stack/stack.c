@@ -1,10 +1,10 @@
 /*
-    Topik praktikum : stack.c
+    File : stack.c
     Deskripsi : implementasi dari stack.h
 */
 #include "stack.h"
 #include <stdio.h>
-#include "boolean.h"
+#include <stdlib.h>
 
 
 void CreateEmpty (Stack *S){
