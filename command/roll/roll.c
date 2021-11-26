@@ -92,6 +92,8 @@ int roll(Pemain *P,TabPeta M, int maxroll, int turn){         // memutar dadu da
                 printf("%s teleport ke petak %d.\n", (*P).NamaPemain[turn], (*P).Pos[turn]) ;
             }
         }
+        (*P).IsDoneRoll[turn] = true ;
+        printf("\n") ;
     }else{
         printf("Tidak dapat melakukan roll 2 kali dalam 1 turn.\n\n");
     }
