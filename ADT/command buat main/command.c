@@ -12,16 +12,42 @@
 void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde)
 {
     /*Kamus*/
+    int inp;
     char CommandInput[100];
     /*Algoritma*/
     printf("Masukkan Command : ");
     /*membaca command dari user*/
     scanf("%s", &CommandInput); 
     printf("\n");
+    if (CommandInput == "SKILL"){
+        inp = 1;
+    }
+    else if (CommandInput == "BUFF"){
+        inp = 2;
+    }
+    else if (CommandInput == "MAP"){
+        inp = 3;
+    }
+    else if (CommandInput == "INSPECT"){
+        inp = 4;
+    }
+    else if (CommandInput == "ROLL"){
+        inp = 5;
+    }
+    else if (CommandInput == "UNDO"){
+        inp = 6;
+    }
+    else if (CommandInput == "ENDTURN"){
+        inp = 7;
+    }
+    else if (CommandInput == "SAVE"){
+        inp = 8;
+    }
 
 
-    switch(CommandInput){
-        case "SKILL": 
+
+    switch(inp){
+        case 1: 
         /* Berisi command skill*/
             int use, buang;
             boolean flag;
@@ -92,7 +118,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
             }
         
 
-        case "BUFF" :
+        case 2:
         /*Berisi command Buff*/
             for (int ib = 1; ib <= (*P).Neff; ib++){
                 printf("%s memiliki buff: \n", (*P).NamaPemain[ib]);
@@ -119,25 +145,25 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                 printf("\n") ;
             }
 
-        case "MAP" : 
+        case 3: 
         /*Berisi command Map*/
 
 
-        case "INSPECT" :
+        case 4:
         /*Berisi command Buff*/
 
 
-        case "ROLL" :
+        case 5:
         /*Berisi command Roll*/
 
 
-        case "UNDO" :
+        case 6:
         /*Berisi command Undo */
 
-        case "ENDTURN" :
+        case 7:
         /*Berisi command Endturn */
 
-        case "SAVE" :
+        case 8:
 
     }
 
