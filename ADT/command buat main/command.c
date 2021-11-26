@@ -174,9 +174,75 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
 
         case 6:
         /*Berisi command Undo */
+        *EndRonde = true;
+        boolean bisaUndo = false;
+        boolean UndoSukses;
+        char Undo;
+        (*SumRonde)--;
+        Pop(Stack, P, &UndoSukses);
+        if (!UndoSukses){
+            printf("Tidak dapat melakukan undo!\n");
+        }
+        else{
+            printf("Undo berhasil dilakukan!\n");
+            if(*SumRonde != 0){
+                printf("State permainan akan kembali ke akhir ronde %d.\n", *SumRonde);
+            }
+            else{
+                printf("State permainan akan kembali ke awal permainan!\n");
+                UndoSukses = false;
+            }
+        }
+        while(!bisaUndo && UndoSukses){
+            printf("Apakah kamu ingin melakukan undo lagi? (Y/N): ");
+            scanf("%c", &Undo);
+            if(Undo == 'Y'){
+                Pop(Stack, P, &UndoSukses);
+                if(!UndoSukses){
+                    printf("Undo gagal dilakukan!\n");
+                }
+                else{
+                    (*SumRonde)--;
+                    printf("Undo berhasil dilakukan!\n");
+                    if(*SumRonde != 0){
+                        printf("State permainan akan kembali ke akhir ronde %d.\n", *SumRonde);
+                    }
+                    else{
+                        printf("State permainan akan kembali ke awal permainan!\n");
+                        UndoSukses = false;
+                    }
+                }
+            }
+            else if (Undo == 'N'){
+                bisaUndo = true;
+                printf("\n");
+            }
+            else{
+                printf("Kamu harus memasukan Y atau N!\n");
+            }
+        }
 
         case 7:
         /*Berisi command Endturn */
+        if (NbElmt(Skills(*P)[PlayerTurn]) > 10){
+            int jumlahSkill = NbElmt(Skills(*P)[PlayerTurn]);
+            for (int x = 0; x < jumlahSkill; x++){
+                int urutan;
+                printAll(P, PlayerTurn);
+                printf("Skill yang kamu miliki mencapai batas maksimal. Pilih skill yang ingin kamu buang: ");
+                delSkill(&Skills(*P)[PlayerTurn], urutan);
+            }
+        }
+        if((*P).IsDoneRoll[PlayerTurn]){
+            (*P).IsSenterPembesar[PlayerTurn] = false;
+            (*P).IsSenterPengecil[PlayerTurn] = false;
+            (*P).IsMirror[PlayerTurn] = false;
+            printf("\n");
+        }
+        else{
+            printf("Kamu belum bisa melakukan endturn\n");
+            printf("Lakukan Roll terlebih dahulu!\n");
+        }
 
         case 8:
 
