@@ -172,7 +172,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
         /*Berisi command Roll*/
         if(!(*P).IsDoneRoll[PlayerTurn]){
             int maxroll = 0;
-            roll(P,Peta,maxroll,PlayerTurn)
+            roll(P,Peta,maxroll,PlayerTurn);
             (*P).IsDoneRoll[PlayerTurn] = true ;
             printf("\n") ;
         }else{
