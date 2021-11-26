@@ -57,12 +57,10 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
         else{
             printf("Input Anda salah!\n");
             printf("Silahkan ulangi dengan benar!\n");
+            printf("Masukkan Command : ");
         }
     }
     
-
-
-
     switch(inp){
         case 1: 
         /* Berisi command skill*/
