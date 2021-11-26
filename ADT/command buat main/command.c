@@ -160,12 +160,25 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                 printf("\n") ;
             }
 
+
         case 3: 
         /*Berisi command Map*/
+            for (int j = 1;j <= Neff(*P);j++){
+                printf("%s", NamaPemain(*P)[j]);
+                int lenNama = strlen(NamaPemain(*P)[j]);
+                while (lenNama < 10){
+                    printf(" ");
+                    lenNama++;
+                }
+                printf(": ");
+                PosisiPemain(*Peta, Pos(*P)[j]);
+                printf("\n");
+            }
+            printf("\n");
 
 
         case 4:
-        /*Berisi command Buff*/
+        /*Berisi command Inspect*/
 
 
         case 5:
