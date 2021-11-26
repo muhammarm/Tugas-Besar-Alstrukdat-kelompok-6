@@ -11,6 +11,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
     int x;
     int HasilCommand;
     boolean endturn=false;
+    char command[100];
 
     /*Algoritma*/
     
@@ -19,6 +20,12 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
      {
          HasilCommand=0;
          printf("Masukkan Command : ");
+         scanf("%d",&command);
+         for(int i=0;i<8;i++){
+             if(command==TabCommand[i]){
+                 HasilCommand=i;
+             }
+         }
          
      }
     
