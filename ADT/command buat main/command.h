@@ -26,4 +26,4 @@ char undo[] = "UNDO";
 char TabCommand[10];
 
 /*prosedur command*/
-void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde); /* SumRonde==Jumlah Ronde */
+void command(TabPeta *Peta,Pemain *P,Stack *S,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde); /* SumRonde==Jumlah Ronde */
