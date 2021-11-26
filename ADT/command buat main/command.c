@@ -14,35 +14,52 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
     /*Kamus*/
     int inp;
     char CommandInput[100];
+    boolean flag;
+    flag = false;
     /*Algoritma*/
     printf("Masukkan Command : ");
     /*membaca command dari user*/
-    scanf("%s", &CommandInput); 
-    printf("\n");
-    if (CommandInput == "SKILL"){
-        inp = 1;
+    while (!flag){
+        scanf("%s", &CommandInput); 
+        printf("\n");
+        if (CommandInput == "SKILL"){
+            inp = 1;
+            flag = true;
+        }
+        else if (CommandInput == "BUFF"){
+            inp = 2;
+            flag = true;
+        }
+        else if (CommandInput == "MAP"){
+            inp = 3;
+            flag = true;
+        }
+        else if (CommandInput == "INSPECT"){
+            inp = 4;
+            flag = true;
+        }
+        else if (CommandInput == "ROLL"){
+            inp = 5;
+            flag = true;
+        }
+        else if (CommandInput == "UNDO"){
+            inp = 6;
+            flag = true;
+        }
+        else if (CommandInput == "ENDTURN"){
+            inp = 7;
+            flag = true;
+        }
+        else if (CommandInput == "SAVE"){
+            inp = 8;
+            flag = true;
+        }
+        else{
+            printf("Input Anda salah!\n");
+            printf("Silahkan ulangi dengan benar!\n");
+        }
     }
-    else if (CommandInput == "BUFF"){
-        inp = 2;
-    }
-    else if (CommandInput == "MAP"){
-        inp = 3;
-    }
-    else if (CommandInput == "INSPECT"){
-        inp = 4;
-    }
-    else if (CommandInput == "ROLL"){
-        inp = 5;
-    }
-    else if (CommandInput == "UNDO"){
-        inp = 6;
-    }
-    else if (CommandInput == "ENDTURN"){
-        inp = 7;
-    }
-    else if (CommandInput == "SAVE"){
-        inp = 8;
-    }
+    
 
 
 
