@@ -59,7 +59,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                                 flag = true;
                             }
                         }
-                        else if (ids(search(&P->Skills[PlayerTurn], use)) == 3) || (ids(search(&P->Skills[PlayerTurn], use)) == 4){
+                        else if (ids(search(&P->Skills[PlayerTurn], use)) == 3 || ids(search(&P->Skills[PlayerTurn], use)) == 4){
                             if (P->IsSenterPembesar[PlayerTurn] == false && P->IsSenterPengecil[PlayerTurn] == false){
                                 printf("%s memakai skill ", NamaPemain(*P)[PlayerTurn]);
                                 printOne(&Skills(*P)[PlayerTurn], use);
