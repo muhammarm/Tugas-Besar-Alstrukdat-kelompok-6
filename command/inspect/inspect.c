@@ -46,6 +46,6 @@ int PetakX;
         printf("Petak %d merupakan petak terlarang.\n",PetakX);
     }
     printf("\n");
-    break;
+}
 
 
