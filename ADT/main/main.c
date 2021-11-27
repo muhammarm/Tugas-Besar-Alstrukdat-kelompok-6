@@ -6,7 +6,6 @@
 #include "arraypeta.h"
 #include "roll.h"
 #include "adtplayer.h" /*untuk adt player*/
-#include "listdp.h" /*untuk adt skill*/
 #include "stack.h"
 #include <stdio.h>
 #include <string.h>
@@ -108,7 +107,7 @@ int main(){
             printf("\n");
             
         /*Prosedur command akan meminta user untuk memasukkan command yang tersedia lalu akan menjalankan fitur command sesuai input user */
-            command(&PetaGame, &P, &S, x, &GameBerakhir, &EndRonde, &JumlahRonde) ;
+            command(&PetaGame, &P, &S, x, &GameBerakhir, &EndRonde, &JumlahRonde, maxroll) ;
             x++;
         }
         for (x=1;x<=P.Neff;x++)
