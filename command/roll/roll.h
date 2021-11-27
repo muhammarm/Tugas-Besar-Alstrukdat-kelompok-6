@@ -1,7 +1,7 @@
 /* File : roll.h */
 /* for roll.c*/
-#ifndef roll_H
-#define roll_H
+#ifndef ROLL_H
+#define ROLL_H
 
 #include "../Map/arraypeta.h"
 #include "../player/adtplayer.h"
