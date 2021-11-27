@@ -115,6 +115,10 @@ boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain)
     }
 }
 
-
+void PeringkatPemain(Pemain *P)
+/*Menuliskan peringkat pemain berdasarkan posisi pemain*/
+{
+    
+}   
 
 

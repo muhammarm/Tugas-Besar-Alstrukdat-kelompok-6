@@ -96,7 +96,8 @@ boolean IsPemainSenterPembesar(Pemain P, char *NamaPemain);
 boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain);
 /*Menghasilkan True jika pemain dengan parameter NamaPemain memakai cermin pengganda atau sebaliknya*/
 
-
+void PeringkatPemain(Pemain *P);
+/*Menuliskan peringkat pemain berdasarkan posisi pemain*/
 
 #endif
 
