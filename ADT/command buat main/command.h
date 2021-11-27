@@ -14,5 +14,5 @@
 #include "inspect.h"
 
 /*prosedur commandd*/
-void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde); /* SumRonde==Jumlah Ronde */
+void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde, int maxroll); /* SumRonde==Jumlah Ronde */
 #endif
