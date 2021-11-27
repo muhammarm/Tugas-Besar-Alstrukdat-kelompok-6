@@ -217,32 +217,31 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                         UndoSukses = false;
                     }
                 }
-                while(!bisaUndo && UndoSukses){
-                    printf("Apakah kamu ingin melakukan undo lagi? (Y/N): ");
-                    scanf("%c", &Undo);
-                    if(Undo == 'Y'){
-                        Pop(Stack, P, &UndoSukses);
-                        if(!UndoSukses){
-                            printf("Undo gagal dilakukan!\n");
+                 while (!bisaUndo && UndoSukses) {
+                    printf("Apakah kamu ingin melakukan undo lagi? (Y/N): ") ;
+                    scanf(" %c", &Undo) ;
+                    if (Undo == 'Y') {
+                        Pop(Stack, P, &UndoSukses) ;
+                        if (!UndoSukses) {
+                            printf("Undo gagal dilakukan!\n\n");
                         }
-                        else{
-                            (*SumRonde)--;
-                            printf("Undo berhasil dilakukan!\n");
-                            if(*SumRonde != 0){
-                                printf("State permainan akan kembali ke akhir ronde %d.\n", *SumRonde);
+                        else {
+                            (*SumRonde)-- ;
+                            printf("Undo berhasil dilakukan.\n") ;
+                            if (*SumRonde != 0) {
+                                printf("State permainan akan kembali ke akhir ronde %d.\n\n", *SumRonde) ;
                             }
-                            else{
-                                printf("State permainan akan kembali ke awal permainan!\n");
-                                UndoSukses = false;
+                            else {
+                                printf("State permainan akan kembali ke awal permainan.\n\n") ;
                             }
                         }
                     }
-                    else if (Undo == 'N'){
-                        bisaUndo = true;
-                        printf("\n");
+                    else if (Undo == 'N') {
+                        bisaUndo = true ;
+                        printf("\n") ;
                     }
-                    else{
-                        printf("Kamu harus memasukan Y atau N!\n");
+                    else {
+                        printf("Kamu harus memasukkan Y atau N.\n\n") ;
                     }
                 }
                 break;
