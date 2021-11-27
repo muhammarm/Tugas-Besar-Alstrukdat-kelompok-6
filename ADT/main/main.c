@@ -84,7 +84,7 @@ int main(){
         while (!EndRonde && x <= JumlahPemain)
         {
             printf("-- Giliran %s --\n\n", (P).NamaPemain[x]) ;
-            draw(&P,x,0);
+            getSkill(&P,x,0);
 
             /*Menuliskan Peta di awal giliran*/
             for(int TulisPemain=1;TulisPemain<=(P).Neff;TulisPemain++)
