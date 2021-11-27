@@ -13,11 +13,46 @@
 #include <stdlib.h>
 
 int main(){
-    int jumlahpemain;
+    /*Kamus*/
+    int JumlahPemain;
     Pemain P; /*dari adt player*/
     TabPeta Peta;/*dari arraypeta*/
-    printf("Masukkan jumlah pemain game : ");
-    scanf("%d",&jumlahpemain);
-    printf("\n") ;
+    Stack S;
+    char filepath[] = "../../config/";
+    char filename[100];
+
+
+    /*START GAME*/
+    /*meminta jumlah pemain*/
+    boolean JumlahInvalid = false ;
+    while(!JumlahInvalid)
+    {
+        printf("Masukkan jumlah pemain game: ") ;
+        scanf("%d", &JumlahPemain) ;
+        if (JumlahPemain < 2 || JumlahPemain > 4)
+        {
+            printf("Jumlah pemain game tidak sesuai dengan ketentuan. Silahkan masukkan kembali jumlah pemain game.\n");
+        }
+        else
+        {
+            JumlahInvalid=true;
+        }
+    }
+    printf("\n");
     
+    /*Membuat list player kosong*/
+    CreateEmptyPemainList(&P);
+    /*membuat list pemain sebanyak "JumlahPemain"*/
+    AddPemain(&P,JumlahPemain);
+    printf("\n");
+
+    /*Program Membaca Map dari File konfigurasi*/
+    scanf("%s", &filename);
+    strncat(filepath, filename, 100);
+    ReadMap (&P,filepath);
+
+    /*Membuat Stack kosong*/
+    CreateEmpty(&S);
+    
+
 }
