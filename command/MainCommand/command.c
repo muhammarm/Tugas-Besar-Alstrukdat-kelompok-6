@@ -118,7 +118,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                     }
                 }
                 else{
-                    printf("Anda sudah melakukan roll, tidak bisa melakukan command SKILL");
+                    printf("Anda sudah melakukan roll, tidak bisa melakukan command SKILL\n");
                 }
                 break;
             
