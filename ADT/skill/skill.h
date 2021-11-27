@@ -4,7 +4,6 @@
 #include "../Boolean/boolean.h"
 #include "../player/adtplayer.h"
 
-#define Nil NULL
 
 boolean isEmpty(LSkill skill);
 //mereturn true apabila skill = Nil

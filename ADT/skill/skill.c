@@ -3,23 +3,23 @@
 #include <stdio.h>
 
 boolean isEmpty(LSkill skill){
-    return (skill == Nil);
+    return (skill == NULL);
 }
 
 address createSkillNode(){
     address S = (address)malloc(sizeof(SkillNode));
-    if (S != Nil){
+    if (S != NULL){
         ids(S) = 0;
-        NextSkill(S) = Nil;
+        NextSkill(S) = NULL;
         return S;
     }
     else{
-        return Nil;
+        return NULL;
     }
 }
 
 void createEmpty(LSkill *skill){
-    *skill = Nil;
+    *skill = NULL;
 }
 
 int NbElmt(LSkill skill){
@@ -29,7 +29,7 @@ int NbElmt(LSkill skill){
     else{
         int ct = 0;
         address P = skill;
-        while (P != Nil){
+        while (P != NULL){
             ct = ct + 1;
             P = NextSkill(P);
         }
@@ -39,12 +39,12 @@ int NbElmt(LSkill skill){
 
 void insSkill(LSkill *skill, address S){
     address last;
-    if (*skill == Nil){
+    if (*skill == NULL){
         *skill = S;
     }
     else{
         last = *skill;
-        while(NextSkill(last) != Nil){
+        while(NextSkill(last) != NULL){
             last = NextSkill(last);
         }
         NextSkill(last) = S;
@@ -56,7 +56,7 @@ address search(LSkill *skill, int urutan){
     flag = false;
     address P = *skill;
     int temp = 1;
-    while ((!flag) && (P != Nil)){
+    while ((!flag) && (P != NULL)){
         if (temp == urutan){
             flag = true;
         }
@@ -111,8 +111,8 @@ void delSkill(LSkill *skill, int urutan){
     int temp = 1;
     address S = *skill;
     if (urutan == 1){
-        if (NextSkill(S) == Nil){
-            *skill = Nil;
+        if (NextSkill(S) == NULL){
+            *skill = NULL;
         }
         else{
             *skill = NextSkill(S);
@@ -135,7 +135,7 @@ void useSkill(Pemain *P, LSkill *skill, int urutan, int curr){
         S = NextSkill(S);
         temp = temp + 1;
     }
-    if (buff(S) != Nil){
+    if (buff(S) != NULL){
         buff(S)(P, curr);
     }
     delSkill(skill, urutan);
@@ -172,7 +172,7 @@ void printOne(LSkill *skill, int urutan){
 void printAll(Pemain *P, int curr){
     address S = P->Skills[curr];
     int temp = 1;
-    while (S != Nil){
+    while (S != NULL){
         if (ids(S) == 1){
             printf("Pintu ga Kemana-mana\n");
         } 
@@ -258,7 +258,7 @@ void makeSkill(address S, int idx){
 
 void copy(LSkill awal, LSkill *copy){
     LSkill A = awal;
-    while (A != Nil){
+    while (A != NULL){
         address S;
         S = createSkillNode();
         makeSkill(S, ids(A));
