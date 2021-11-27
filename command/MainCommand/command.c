@@ -59,69 +59,74 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
         case 1: 
         /* Berisi command skill*/
             flag = false;
-            while(!flag){
-                printf("\n");
-                if (isEmpty(Skills(*P)[PlayerTurn])){
-                    printf("Skillmu kosong untuk saat ini");
-                    flag = true;
-                }
-                else{
-                    printAll(P, PlayerTurn);
-                }
-                printf("\n");
-                printf("Tekan 0 untuk keluar. Masukkan bilangan negatif untuk membuang skill");
-                printf("\n");
-                printf("Pilih skill yang ingin digunakan: ");
-                scanf("%d", &use);
-                printf("\n");
-                buang = (-1) * use;
-                if (use == 0){
-                    flag = true;
-                }
-                else{
-                    if (use > 0 && use <= NbElmt(Skills(*P)[PlayerTurn])){
-                        if (ids(search(&P->Skills[PlayerTurn], use)) == 2){
-                            if (P->IsMirror[PlayerTurn] == false){
-                                printf("%s memakai skill ", NamaPemain(*P)[PlayerTurn]);
-                                printOne(&Skills(*P)[PlayerTurn], use);
-                                useSkill(P, &Skills(*P)[PlayerTurn], use, PlayerTurn);
-                                flag = true;
-                            }
-                            else{
-                                printf("Kamu sudah pernah memakai skill ini. \n");
-                                flag = true;
-                            }
-                        }
-                        else if (ids(search(&P->Skills[PlayerTurn], use)) == 3 || ids(search(&P->Skills[PlayerTurn], use)) == 4){
-                            if (P->IsSenterPembesar[PlayerTurn] == false && P->IsSenterPengecil[PlayerTurn] == false){
-                                printf("%s memakai skill ", NamaPemain(*P)[PlayerTurn]);
-                                printOne(&Skills(*P)[PlayerTurn], use);
-                                useSkill(P, &Skills(*P)[PlayerTurn], use, PlayerTurn);
-                                flag = true;
-                            }
-                            else{
-                                printf("Kamu sudah pernah memakai skill ini. \n");
-                                flag = true;
-                            }
-                        }
-                        else{
-                            printf("%s memakai ", NamaPemain(*P)[PlayerTurn]);
-                            printOne(&Skills(*P)[PlayerTurn], use);
-                            useSkill(P, &Skills(*P)[PlayerTurn], use, PlayerTurn);
-                            flag = true;
-                        }
-                    }
-                    else if (use < 0 && buang <= NbElmt(Skills(*P)[PlayerTurn])){
-                        printf("%s membuang skill ", NamaPemain(*P)[PlayerTurn]);
-                        printOne(&Skills(*P)[PlayerTurn], use);
-                        delSkill(&Skills(*P)[PlayerTurn], buang);
+            if (!(*P).IsDoneRoll[PlayerTurn]){
+                while(!flag){
+                    printf("\n");
+                    if (isEmpty(Skills(*P)[PlayerTurn])){
+                        printf("Skillmu kosong untuk saat ini");
                         flag = true;
                     }
                     else{
-                        printf("Input tidak valid!\n");
+                        printAll(P, PlayerTurn);
+                        printf("\n");
+                        printf("Tekan 0 untuk keluar. Masukkan bilangan negatif untuk membuang skill");
+                        printf("\n");
+                        printf("Pilih skill yang ingin digunakan: ");
+                        scanf("%d", &use);
+                        printf("\n");
+                    }
+                    buang = (-1) * use;
+                    if (use == 0){
                         flag = true;
                     }
+                    else{
+                        if (use > 0 && use <= NbElmt(Skills(*P)[PlayerTurn])){
+                            if (ids(search(&P->Skills[PlayerTurn], use)) == 2){
+                                if (P->IsMirror[PlayerTurn] == false){
+                                    printf("%s memakai skill ", NamaPemain(*P)[PlayerTurn]);
+                                    printOne(&Skills(*P)[PlayerTurn], use);
+                                    useSkill(P, &Skills(*P)[PlayerTurn], use, PlayerTurn);
+                                    flag = true;
+                                }
+                                else{
+                                    printf("Kamu sudah pernah memakai skill ini. \n");
+                                    flag = true;
+                                }
+                            }
+                            else if (ids(search(&P->Skills[PlayerTurn], use)) == 3 || ids(search(&P->Skills[PlayerTurn], use)) == 4){
+                                if (P->IsSenterPembesar[PlayerTurn] == false && P->IsSenterPengecil[PlayerTurn] == false){
+                                    printf("%s memakai skill ", NamaPemain(*P)[PlayerTurn]);
+                                    printOne(&Skills(*P)[PlayerTurn], use);
+                                    useSkill(P, &Skills(*P)[PlayerTurn], use, PlayerTurn);
+                                    flag = true;
+                                }
+                                else{
+                                    printf("Kamu sudah pernah memakai skill ini. \n");
+                                    flag = true;
+                                }
+                            }
+                            else{
+                                printf("%s memakai ", NamaPemain(*P)[PlayerTurn]);
+                                printOne(&Skills(*P)[PlayerTurn], use);
+                                useSkill(P, &Skills(*P)[PlayerTurn], use, PlayerTurn);
+                                flag = true;
+                            }
+                        }
+                        else if (use < 0 && buang <= NbElmt(Skills(*P)[PlayerTurn])){
+                            printf("%s membuang skill ", NamaPemain(*P)[PlayerTurn]);
+                            printOne(&Skills(*P)[PlayerTurn], use);
+                            delSkill(&Skills(*P)[PlayerTurn], buang);
+                            flag = true;
+                        }
+                        else{
+                            printf("Input tidak valid!\n");
+                            flag = true;
+                        }
+                    }
                 }
+            }
+            else{
+                printf("Anda sudah melakukan roll, tidak bisa melakukan command SKILL");
             }
             break;
         

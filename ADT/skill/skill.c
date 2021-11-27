@@ -103,8 +103,10 @@ void getSkill(Pemain *P, int curr, int num){
     S = createSkillNode();
     int idx = percentage(random(num));
     ids(S) = idx;
-    makeSkill(S, ids(S));
-    insSkill(&Skills(*P)[curr], S);
+    if (idx != 6){
+        makeSkill(S, ids(S));
+        insSkill(&Skills(*P)[curr], S);
+    }
 }
 
 void delSkill(LSkill *skill, int urutan){
@@ -174,22 +176,22 @@ void printAll(Pemain *P, int curr){
     int temp = 1;
     while (S != NULL){
         if (ids(S) == 1){
-            printf("Pintu ga Kemana-mana\n");
+            printf("%d. Pintu ga Kemana-mana\n", temp);
         } 
         else if (ids(S) == 2){
-            printf("Cermin Pengganda\n");
+            printf("%d. Cermin Pengganda\n", temp);
         } 
         else if (ids(S) == 3){
-            printf("Senter Pembesar Hoki\n");
+            printf("%d. Senter Pembesar Hoki\n", temp);
         }  
         else if (ids(S) == 4){
-            printf("Senter Pengecil Hoki\n");
+            printf("%d. Senter Pengecil Hoki\n", temp);
         }  
         else if (ids(S) == 5){
-            printf("Mesin Penukar Posisi\n");
+            printf("%d. Mesin Penukar Posisi\n", temp);
         }  
         else if (ids(S) == 6){
-            printf("Teknologi Gagal\n");
+            printf("%d. Teknologi Gagal\n", temp);
         }
         temp = temp + 1;
         S = NextSkill(S);
