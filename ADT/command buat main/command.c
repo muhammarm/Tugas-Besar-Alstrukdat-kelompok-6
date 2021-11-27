@@ -2,11 +2,6 @@
 /*deskripsi:implementasi dari command.h*/
 
 #include "command.h"
-#include "adtplayer.h"
-#include "skill.h"
-#include "arraypeta.h"
-#include "stack.h"
-#include "inspect.h"
 #include <stdio.h>
 #include <string.h>
 
