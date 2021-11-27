@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde)
+void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde, int maxroll)
 {
     /*Kamus*/
     int inp;
@@ -184,7 +184,6 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
         case 5:
         /*Berisi command Roll*/
         if(!(*P).IsDoneRoll[PlayerTurn]){
-            int maxroll = 0;
             roll(P,Peta,maxroll,PlayerTurn);
             (*P).IsDoneRoll[PlayerTurn] = true ;
             printf("\n") ;
@@ -199,7 +198,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
             *EndGame = true ;
             *EndRonde = true ;
         }
-                break ;
+                break;
         case 6:
         /*Berisi command Undo */
             *EndRonde = true;

@@ -14,7 +14,7 @@
 
 int main(){
     /*Kamus*/
-    int JumlahPemain;
+    int JumlahPemain, maxroll;
     Pemain P; /*dari adt player*/
     TabPeta Peta;/*dari arraypeta*/
     Stack S;
@@ -50,6 +50,7 @@ int main(){
     scanf("%s", &filename);
     strncat(filepath, filename, 100);
     ReadMap (&P,filepath);
+    maxroll = ReadMaxroll(filepath);
 
     /*Membuat Stack kosong*/
     CreateEmpty(&S);
