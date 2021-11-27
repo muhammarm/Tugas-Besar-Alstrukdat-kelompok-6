@@ -1,4 +1,4 @@
-/*File : adtplayer.h*/
+/* File : adtplayer.h */
 /* ADT player untuk menyimpan informasi-informasi terkait player */
 
 #ifndef ADTPLAYER_H
@@ -13,11 +13,28 @@
 #define IdxMin 1
 #define IdxUndef -999
 
+
+/* Definisi Type Data LinkedList */
+typedef struct TypePemain Pemain; /* Definisi tipe Pemain untuk struct SkillNode */
+typedef struct ListSkillNode *address;
+typedef address LSkill; /* List Skill*/
+typedef struct ListSkillNode {
+    address NextSkill;
+    char NamaSkill[25];  /* deklarasi string sepanjang 25 karakter */
+    int ids;
+    void (*buff)(Pemain *, int);
+} SkillNode;
+
+/*notasi akses(linked list)*/
+#define ids(P) (P)->ids
+#define NextSkill(P) (P)->NextSkill
+#define NamaSkill(P) (P)->NamaSkill
+#define buff(P) (P)->buff
+
+
 /*Data player menggunakan implementasi array*/
 typedef int ElType;
-
-typedef struct
-{
+typedef struct TypePemain {
     int Neff;
     char NamaPemain[IdxMax-IdxMin+1][16];
     ElType Pos[IdxMax - IdxMin +1];
@@ -42,21 +59,6 @@ typedef struct
 #define IsDoneRoll(P) (P).IsDoneRoll
 #define Skills(P) (P).Skills
 
-/* Definisi Type Data LinkedList */
-typedef struct ListSkillNode *address;
-typedef address LSkill;/* List Skill*/
-typedef struct ListSkillNode {
-    address NextSkill;
-    char NamaSkill[25];  /* deklarasi string sepanjang 25 karakter */
-    int ids;
-    void (*buff)(Pemain *, int);
-} SkillNode;
-
-/*notasi akses(linked list)*/
-#define ids(P) (P)->ids
-#define NextSkill(P) (P)->NextSkill
-#define NamaSkill(P) (P)->NamaSkill
-#define buff(P) (P)->buff
 
 void CreateEmptyPemainList(Pemain *P);
 /* Membuat List Player yang kosong*/
