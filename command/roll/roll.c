@@ -6,7 +6,8 @@
 int getNomor(int minroll, int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
 {
 	int nomor;
-	A:nomor = minroll + rand()%((maxroll - minroll + 1) + 1);
+    srand(time(0));
+	A:nomor = minroll + rand() / (RAND_MAX / (maxroll - minroll + 1) + 1);
 	if(nomor==0)
 		goto A;
 	else
@@ -60,7 +61,9 @@ int roll(Pemain *P,TabPeta *M, int maxroll, int turn){         // memutar dadu d
     }
     if (move){
         if ((*M).Peta[(*P).Pos[turn]].TP == -1) {
+            if((*P).Pos[turn]<(*M).Neff){
             printf("%s tidak menemukan teleporter.\n", (*P).NamaPemain[turn]);
+            }
         }else{
             printf("%s menemukan teleporter.\n", (*P).NamaPemain[turn]);
             if ((*P).IsImmune[turn]){
