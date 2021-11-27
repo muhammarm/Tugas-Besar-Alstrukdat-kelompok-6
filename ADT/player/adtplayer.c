@@ -145,7 +145,7 @@ void PeringkatPemain(Pemain *P)
 
     for (int i = Neff(*P)-1; i >= 0; i--)
     {
-        printf("Peringkat %d: %s dengan posisi pemain di petak ke-%d.\n", Neff(*P) - l, (*P).uName[a2[i]], a1[i]) ;
+        printf("Peringkat %d: %s dengan posisi pemain di petak ke-%d.\n", Neff(*P) - i, (*P).NamaPemain[a2[i]], a1[i]) ;
     }
 }
 
