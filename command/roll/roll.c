@@ -6,8 +6,8 @@
 int getNomor(int minroll, int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
 {
 	int nomor;
-	A:nomor = minroll + rand()%((maxroll - minroll + 1));
-	if(nomor>maxroll)
+	A:nomor = minroll + rand()%((maxroll - minroll + 1) + 1);
+	if(nomor==0)
 		goto A;
 	else
 		return nomor;
