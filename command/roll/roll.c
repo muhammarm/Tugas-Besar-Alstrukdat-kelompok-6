@@ -24,9 +24,9 @@ int roll(Pemain *P,TabPeta *M, int maxroll, int turn){         // memutar dadu d
     if((*P).IsSenterPembesar[turn]){
         dice = getNomor(floor(maxroll/2),maxroll);
     }else if((*P).IsSenterPengecil[turn]){
-        dice = getNomor(1,floor(maxroll/2));
+        dice = getNomor(0,floor(maxroll/2));
     }else{
-        dice = getNomor(1,maxroll);
+        dice = getNomor(0,maxroll);
     }                                
     printf("%s mendapatkan angka %d\n", (*P).NamaPemain[turn], dice); 
     if ((*M).Peta[(*P).Pos[turn]+dice].Petak=='.' && (*M).Peta[(*P).Pos[turn]-dice].Petak=='.'){

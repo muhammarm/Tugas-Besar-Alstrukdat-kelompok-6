@@ -129,6 +129,9 @@ int main(){
                     printf("\n");
                     Push(&S,&P);
                 }
+                printf("Leaderboard\n");
+                PeringkatPemain(&P);
+                printf("\n");
                 valid = true;
                 break;
         
