@@ -13,6 +13,7 @@
 #include "mesin_kata.h"
 #include "inspect.h"
 
-/*prosedur commandd*/
+/*prosedur command*/
 void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGame, boolean *EndRonde, int *SumRonde, int maxroll); /* SumRonde==Jumlah Ronde */
+
 #endif
