@@ -5,6 +5,7 @@
 #define __MESIN_KAR_H_
 
 #include "../Boolean/boolean.h"
+#include <sys/stat.h>
 
 /* State Mesin */
 extern char CC;
@@ -24,5 +25,8 @@ void ADV();
    F.S. : CC adalah karakter berikutnya dari CC yang lama,
           CC mungkin = EOF.
           Jika CC = EOF maka EOP akan menyala (true) */
+
+boolean CheckIfFileExists(const char* Filepath);
+/* Mengembalikan true ketika Filepath ada di komputer */
 
 #endif

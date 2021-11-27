@@ -37,3 +37,14 @@ void ADV()
        fclose(pita);
     }
 }
+
+boolean CheckIfFileExists(const char* Filepath)
+/* Mengembalikan true ketika Filepath ada di komputer */
+{
+    struct stat buffer;
+    int exist = stat(Filepath, &buffer);
+    if (exist == 0)
+        return true;
+    else  
+        return false;
+}
