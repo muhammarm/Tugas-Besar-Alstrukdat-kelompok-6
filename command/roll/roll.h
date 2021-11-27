@@ -3,8 +3,8 @@
 #ifndef ROLL_H
 #define ROLL_H
 
-#include "../Map/arraypeta.h"
-#include "../player/adtplayer.h"
+#include "../../ADT/Map/arraypeta.h"
+#include "../../ADT/player/adtplayer.h"
 #include <time.h>
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
