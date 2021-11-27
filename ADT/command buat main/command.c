@@ -6,6 +6,7 @@
 #include "skill.h"
 #include "arraypeta.h"
 #include "stack.h"
+#include "inspect.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -179,7 +180,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
 
         case 4:
         /*Berisi command Inspect*/
-
+            inspect(*P);
 
         case 5:
         /*Berisi command Roll*/
