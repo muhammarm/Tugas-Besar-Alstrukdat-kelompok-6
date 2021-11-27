@@ -3,8 +3,16 @@
 #include "roll.h"
 
 
-
-
+int getNomor(int minroll, int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu
+{
+	int nomor;
+    srand(time(0));
+	A:nomor = minroll + rand() / (RAND_MAX / (maxroll - minroll + 1) + 1);
+	if(nomor==0)
+		goto A;
+	else
+		return nomor;
+}
 void langkahPemain(Pemain *P,int dice, int turn){                   // menambahkan nilai pada posisi player sesuai roll dadu
     (*P).Pos[turn] = dice;
     printf("%s berada di petak %d.\n",(*P).NamaPemain[turn], (*P).Pos[turn]);
@@ -13,13 +21,12 @@ void langkahPemain(Pemain *P,int dice, int turn){                   // menambahk
 int roll(Pemain *P,TabPeta *M, int maxroll, int turn){         // memutar dadu dan mendapatkan nilai tertentu di antara 1 dan MaxRoll.
     int dice;
     boolean move = false;
-    srand(time(0));
     if((*P).IsSenterPembesar[turn]){
-        dice = floor(maxroll/2) + rand() / (RAND_MAX / (maxroll - floor(maxroll/2) + 1) + 1);
+        dice = getNomor(floor(maxroll/2),maxroll);
     }else if((*P).IsSenterPengecil[turn]){
-        dice = 1 + rand() / (RAND_MAX / (floor(maxroll/2)) + 1);
+        dice = getNomor(1,floor(maxroll/2));
     }else{
-        dice = 1 + rand() / (RAND_MAX / (maxroll) + 1);
+        dice = getNomor(1,maxroll);
     }                                
     printf("%s mendapatkan angka %d\n", (*P).NamaPemain[turn], dice); 
     if ((*M).Peta[(*P).Pos[turn]+dice].Petak=='.' && (*M).Peta[(*P).Pos[turn]-dice].Petak=='.'){
