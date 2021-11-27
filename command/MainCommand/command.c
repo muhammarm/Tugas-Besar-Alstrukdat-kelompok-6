@@ -64,6 +64,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                     printf("\n");
                     if (isEmpty(Skills(*P)[PlayerTurn])){
                         printf("Skillmu kosong untuk saat ini");
+                        printf("\n");
                         flag = true;
                     }
                     else{
