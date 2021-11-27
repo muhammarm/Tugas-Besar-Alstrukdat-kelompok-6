@@ -1,8 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "roll.h"
-#include "arraypeta.h"
-#include "adtplayer.h"
 
 
 int getNomor(int minroll, int maxroll)  //fungsi untuk mendapatkan nomor random sebagai nomor dadu

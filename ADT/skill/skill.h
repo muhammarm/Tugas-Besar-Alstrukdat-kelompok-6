@@ -3,13 +3,14 @@
 
 #include "../Boolean/boolean.h"
 #include "../player/adtplayer.h"
+#include <time.h>
 
 
 boolean isEmpty(LSkill skill);
 //mereturn true apabila skill = Nil
 
-address createSkillNode();
-//mereturn address hasil alokasi skill
+AddrSkill createSkillNode();
+//mereturn AddrSkill hasil alokasi skill
 
 void createEmpty(LSkill *skill);
 //I.S.: *skill = sembarang
@@ -18,12 +19,12 @@ void createEmpty(LSkill *skill);
 int NbElmt(LSkill skill);
 //mereturn jumlah skill yang ada di dalam skill
 
-void insSkill(LSkill *skill, address S);
-//menambahkan skill dengan address S ke LSkill
+void insSkill(LSkill *skill, AddrSkill S);
+//menambahkan skill dengan AddrSkill S ke LSkill
 
-address search(LSkill *skill, int urutan);
+AddrSkill search(LSkill *skill, int urutan);
 //Mencari apakah ada elemen list yang sama dengan urutan pada skill
-//apabila ada, mengirimkan address elemen tersebut
+//apabila ada, mengirimkan AddrSkill elemen tersebut
 //apabila tidak, mengirimkan nilai Nil
 
 int percentage(int x);
@@ -62,7 +63,7 @@ void senterPengecil(Pemain *P, int curr);
 void mesinPenukar(Pemain *P, int curr);
 //Pemain dapat menukar posisi dengan target Pemain yang dipilih
 
-void makeSkill(address S, int idx);
+void makeSkill(AddrSkill S, int idx);
 //Mengisi atribut dari skill sesuai ids yang diinput
 
 void copy(LSkill awal, LSkill *copy);

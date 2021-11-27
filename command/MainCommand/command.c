@@ -18,31 +18,31 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
     while (!flag){
         scanf("%s", &CommandInput); 
         printf("\n");
-        if (CommandInput == "SKILL"){
+        if (strcmp(CommandInput, "SKILL") == 0){
             inp = 1;
             flag = true;
         }
-        else if (CommandInput == "BUFF"){
+        else if (strcmp(CommandInput, "BUFF") == 0){
             inp = 2;
             flag = true;
         }
-        else if (CommandInput == "MAP"){
+        else if (strcmp(CommandInput, "MAP") == 0){
             inp = 3;
             flag = true;
         }
-        else if (CommandInput == "INSPECT"){
+        else if (strcmp(CommandInput, "INSPECT") == 0){
             inp = 4;
             flag = true;
         }
-        else if (CommandInput == "ROLL"){
+        else if (strcmp(CommandInput, "ROLL") == 0){
             inp = 5;
             flag = true;
         }
-        else if (CommandInput == "UNDO"){
+        else if (strcmp(CommandInput, "UNDO") == 0){
             inp = 6;
             flag = true;
         }
-        else if (CommandInput == "ENDTURN"){
+        else if (strcmp(CommandInput, "ENDTURN") == 0){
             inp = 7;
             flag = true;
         }
@@ -54,10 +54,10 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
     }
     
     switch(inp){
+        int use, buang;
+        boolean flag;
         case 1: 
         /* Berisi command skill*/
-            int use, buang;
-            boolean flag;
             flag = false;
             while(!flag){
                 printf("\n");
@@ -123,6 +123,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                     }
                 }
             }
+            break;
         
 
         case 2:
@@ -151,6 +152,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                 }
                 printf("\n") ;
             }
+            break;
 
 
         case 3: 
@@ -167,11 +169,14 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                 printf("\n");
             }
             printf("\n");
+            break;
 
 
         case 4:
         /*Berisi command Inspect*/
             inspect(*Peta);
+            break;
+
 
         case 5:
         /*Berisi command Roll*/
@@ -189,7 +194,10 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                 printf("Pemenang game ini adalah %s.\n", (*P).NamaPemain[PlayerTurn]) ;
                 *EndGame = true ;
                 *EndRonde = true ;
-            }break;
+            }
+            break;
+
+
         case 6:
         /*Berisi command Undo */
             *EndRonde = true;
@@ -239,6 +247,8 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                     printf("Kamu harus memasukan Y atau N!\n");
                 }
             }
+            break;
+
 
         case 7:
         /*Berisi command Endturn */
@@ -261,6 +271,7 @@ void command(TabPeta *Peta,Pemain *P,Stack *Stack,int PlayerTurn,boolean *EndGam
                 printf("Kamu belum bisa melakukan endturn\n");
                 printf("Lakukan Roll terlebih dahulu!\n");
             }
+            break;
 
     }
 

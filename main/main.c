@@ -1,12 +1,7 @@
 /* File : main.c*/
 /* berisi program utama untuk menjalankan permainan ular tangga*/
 
-#include "mesin_kar.h"
-#include "mesin_kata.h"
-#include "arraypeta.h"
-#include "roll.h"
-#include "adtplayer.h" /*untuk adt player*/
-#include "stack.h"
+#include "../command/MainCommand/command.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -44,7 +39,7 @@ int main(){
 
     /*Program Membaca Map dari File konfigurasi*/
     int maxroll;
-    char configpath[] =  "..\\..\\config\\";
+    char configpath[] =  "..\\config\\";
     char filename[100];
     char filepath[255];
 
@@ -87,22 +82,16 @@ int main(){
             getSkill(&P,x,0);
 
             /*Menuliskan Peta di awal giliran*/
-            for(int TulisPemain=1;TulisPemain<=(P).Neff;TulisPemain++)
-            {/*loop untuk menuliskan nama pemain*/
-                printf("%s\t", (P).NamaPemain[TulisPemain]) ;
-                printf(" : ");
-                for(int TulisPetak=1 ; TulisPetak<=PetaGame.Neff;TulisPetak++)
-                {/*loop untuk menampilkan state peta dengan posisi pemain digambarkan dengan "*" */
-                    if((P).Pos[TulisPemain]==TulisPetak)
-                    {
-                        printf("*");
-                    }
-                    else
-                    {
-                        printf("%c", (PetaGame).Peta[TulisPetak].Petak);
-                    }
+            for (int j = 1;j <= Neff(P);j++){
+                printf("%s", NamaPemain(P)[j]);
+                int lenNama = strlen(NamaPemain(P)[j]);
+                while (lenNama < 10){
+                    printf(" ");
+                    lenNama++;
                 }
-                printf(" %d", P.Pos[TulisPemain]) ; /*->Pada akhir setiap baris ditampilkan petak pemain tersebut*/
+                printf(": ");
+                PosisiPemain(PetaGame, Pos(P)[j]);
+                printf("\n");
             }
             printf("\n");
             

@@ -6,6 +6,7 @@
 #include "../../ADT/Map/arraypeta.h"
 #include "../../ADT/player/adtplayer.h"
 #include <time.h>
+#include <math.h>
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 int getNomor(int minroll, int maxroll);  

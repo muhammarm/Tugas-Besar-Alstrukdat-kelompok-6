@@ -6,8 +6,8 @@ boolean isEmpty(LSkill skill){
     return (skill == NULL);
 }
 
-address createSkillNode(){
-    address S = (address)malloc(sizeof(SkillNode));
+AddrSkill createSkillNode(){
+    AddrSkill S = (AddrSkill)malloc(sizeof(SkillNode));
     if (S != NULL){
         ids(S) = 0;
         NextSkill(S) = NULL;
@@ -28,7 +28,7 @@ int NbElmt(LSkill skill){
     }
     else{
         int ct = 0;
-        address P = skill;
+        AddrSkill P = skill;
         while (P != NULL){
             ct = ct + 1;
             P = NextSkill(P);
@@ -37,8 +37,8 @@ int NbElmt(LSkill skill){
     }
 }
 
-void insSkill(LSkill *skill, address S){
-    address last;
+void insSkill(LSkill *skill, AddrSkill S){
+    AddrSkill last;
     if (*skill == NULL){
         *skill = S;
     }
@@ -51,10 +51,10 @@ void insSkill(LSkill *skill, address S){
     }
 }
 
-address search(LSkill *skill, int urutan){
+AddrSkill search(LSkill *skill, int urutan){
     boolean flag;
     flag = false;
-    address P = *skill;
+    AddrSkill P = *skill;
     int temp = 1;
     while ((!flag) && (P != NULL)){
         if (temp == urutan){
@@ -99,7 +99,7 @@ int random(int x){
 }
 
 void getSkill(Pemain *P, int curr, int num){
-    address S;
+    AddrSkill S;
     S = createSkillNode();
     int idx = percentage(random(num));
     ids(S) = idx;
@@ -109,7 +109,7 @@ void getSkill(Pemain *P, int curr, int num){
 
 void delSkill(LSkill *skill, int urutan){
     int temp = 1;
-    address S = *skill;
+    AddrSkill S = *skill;
     if (urutan == 1){
         if (NextSkill(S) == NULL){
             *skill = NULL;
@@ -119,7 +119,7 @@ void delSkill(LSkill *skill, int urutan){
         }
     }
     else{
-        address prec = *skill;
+        AddrSkill prec = *skill;
         S = search(skill, urutan);
         while (NextSkill(prec) != S){
             prec = NextSkill(prec);
@@ -130,7 +130,7 @@ void delSkill(LSkill *skill, int urutan){
 
 void useSkill(Pemain *P, LSkill *skill, int urutan, int curr){
     int temp = 1;
-    address S = *skill;
+    AddrSkill S = *skill;
     while(temp < urutan){
         S = NextSkill(S);
         temp = temp + 1;
@@ -143,7 +143,7 @@ void useSkill(Pemain *P, LSkill *skill, int urutan, int curr){
 
 
 void printOne(LSkill *skill, int urutan){
-    address S = *skill;
+    AddrSkill S = *skill;
     int temp = 1;
     while (temp < urutan){
         S = NextSkill(S);
@@ -170,7 +170,7 @@ void printOne(LSkill *skill, int urutan){
 }
 
 void printAll(Pemain *P, int curr){
-    address S = P->Skills[curr];
+    AddrSkill S = P->Skills[curr];
     int temp = 1;
     while (S != NULL){
         if (ids(S) == 1){
@@ -229,7 +229,7 @@ void mesinPenukar(Pemain *P, int curr){
     Pos(*P)[curr] = temp;
 }
 
-void makeSkill(address S, int idx){
+void makeSkill(AddrSkill S, int idx){
     switch (idx){
         case 1:
             ids(S) = 1;
@@ -259,7 +259,7 @@ void makeSkill(address S, int idx){
 void copy(LSkill awal, LSkill *copy){
     LSkill A = awal;
     while (A != NULL){
-        address S;
+        AddrSkill S;
         S = createSkillNode();
         makeSkill(S, ids(A));
         insSkill(copy, S);

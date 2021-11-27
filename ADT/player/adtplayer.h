@@ -8,7 +8,6 @@
 #include <stdlib.h>
 
 /*Kamus Umum*/
-#define Nil NULL
 #define IdxMax 5
 #define IdxMin 1
 #define IdxUndef -999
@@ -16,10 +15,10 @@
 
 /* Definisi Type Data LinkedList */
 typedef struct TypePemain Pemain; /* Definisi tipe Pemain untuk struct SkillNode */
-typedef struct ListSkillNode *address;
-typedef address LSkill; /* List Skill*/
+typedef struct ListSkillNode *AddrSkill;
+typedef AddrSkill LSkill; /* List Skill*/
 typedef struct ListSkillNode {
-    address NextSkill;
+    AddrSkill NextSkill;
     char NamaSkill[25];  /* deklarasi string sepanjang 25 karakter */
     int ids;
     void (*buff)(Pemain *, int);
