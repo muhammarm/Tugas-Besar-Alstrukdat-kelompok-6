@@ -9,8 +9,6 @@
 #include <math.h>
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
-int getNomor(int minroll, int maxroll);  
-//fungsi untuk mendapatkan nomor random sebagai nomor dadu
 
 void langkahPemain(Pemain *P,int dice, int turn); 
 /* I.S. P terdefinisi
