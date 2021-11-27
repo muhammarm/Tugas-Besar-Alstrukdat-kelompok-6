@@ -118,7 +118,36 @@ boolean IsPemainCerminPengganda(Pemain P,char *NamaPemain)
 void PeringkatPemain(Pemain *P)
 /*Menuliskan peringkat pemain berdasarkan posisi pemain*/
 {
-    
-}   
+    /*deklarasi array a1 dan a2*/
+    int a1[Neff(*P)];
+    int a2[Neff(*P)];
+
+    for (int x = 0; x < Neff(*P); x++)
+    {
+        a1[x] = (*P).Pos[x + 1] ;
+        a2[x] = x + 1 ;
+    }
+
+    int b1, b2;
+    for (int y = Neff(*P) - 1; y >= 0; y--) {
+        for (int z = y; z >= 0; z--) {
+            if (a1[y] < a1[z]) {
+                b1 = a1[y] ;
+                a1[y] = a1[z] ;
+                a1[z] = b1 ; 
+
+                b2 = a2[y] ;
+                a2[y] = a2[z] ;
+                a2[z] = b2 ;
+            }
+        }
+    }
+
+    for (int i = Neff(*P)-1; i >= 0; i--)
+    {
+        printf("Peringkat %d: %s dengan posisi pemain di petak ke-%d.\n", Neff(*P) - l, (*P).uName[a2[i]], a1[i]) ;
+    }
+}
+
 
 
