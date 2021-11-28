@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "adtplayer.h"
 
 int main(){
@@ -6,7 +7,7 @@ int main(){
     Pemain P;
     int n;
 
-    createEmptyPemainList(&P);
+    CreateEmptyPemainList(&P);
     printf("Masukkan Jumlah Pemain : ");
     scanf("%d", &n);
     printf("\nmasukkan salah satu username untuk mengecek\n");
