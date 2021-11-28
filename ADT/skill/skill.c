@@ -99,13 +99,18 @@ int random(int x){
 }
 
 void getSkill(Pemain *P, int curr, int num){
-    AddrSkill S;
-    S = createSkillNode();
-    int idx = percentage(random(num));
-    ids(S) = idx;
-    if (idx != 6){
-        makeSkill(S, ids(S));
-        insSkill(&Skills(*P)[curr], S);
+    if (NbElmt(Skills(*P)[curr]) <= 9){
+        AddrSkill S;
+        S = createSkillNode();
+        int idx = percentage(random(num));
+        ids(S) = idx;
+        if (idx != 6){
+            makeSkill(S, ids(S));
+            insSkill(&Skills(*P)[curr], S);
+        }
+    }
+    else{
+        printf("Skill kamu sudah penuh!\n");
     }
 }
 
