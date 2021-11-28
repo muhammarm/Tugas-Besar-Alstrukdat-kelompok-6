@@ -70,14 +70,14 @@ int roll(Pemain *P,TabPeta *M, int maxroll, int turn){         // memutar dadu d
                 printf("%s memiliki imunitas teleport.\n", (*P).NamaPemain[turn]);
                 printf("Apakah %s ingin teleport (Y/N)? ", (*P).NamaPemain[turn]);
                 boolean televalid = false;
-                char asktele;
+                char asktele[10];
                 while (!televalid) {
-                    scanf("%c", &asktele);
-                    if (asktele == 'Y') {
+                    scanf("%s", &asktele);
+                    if (strcmp(asktele, "Y") == 0){ 
                         (*P).Pos[turn] = (*M).Peta[(*P).Pos[turn]].TP;
                         printf("%s teleport ke petak %d.\n", (*P).NamaPemain[turn], (*P).Pos[turn]);
                         televalid = true ;
-                    }else if (asktele == 'N') {
+                    }else if (strcmp(asktele, "N") == 0){
                         printf("%s tidak teleport.\n", (*P).NamaPemain[turn]);
                         (*P).IsImmune[turn] = false ;
                         printf("Buff imunitas teleport hilang.\n") ;
