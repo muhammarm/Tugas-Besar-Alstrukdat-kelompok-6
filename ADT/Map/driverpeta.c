@@ -7,7 +7,6 @@
 #include <unistd.h>
 #include "../Boolean/boolean.h"
 #include "arraypeta.h"
-#include "arraypeta.c"
 
 TabPeta Map;
 int posisi;
